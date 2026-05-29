@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Colcas - Experiencias en Yanque</title>
+    <link rel="icon" href="images/presentacion/logo.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-left">
+            <a href="index.html">
+                <img src="images/presentacion/logo.jpeg" alt="Logo Las Colcas" class="logo-circular">
+            </a>
+        </div>
+
+        <div class="header-right">
+            <div class="utility-bar">
+                <div class="contact-phone">
+                    <img src="images/icons/telephone-inbound-fill.svg" alt="Icono teléfono" class="icon-svg">
+                    <span data-translate="llamanos">Llámanos:</span>
+                    <a href="tel:+51900962294">+51 900 962 294</a>
+                </div>
+                
+                <div class="social-networks">
+                    <a href="https://www.facebook.com/share/1DadiKhStY/" target="_blank" rel="noopener noreferrer">
+                        <img src="images/icons/facebook.svg" alt="Facebook" class="icon-svg">
+                    </a>
+                    <a href="https://www.instagram.com/banostermaleschininia/?igsh=MTJpeXl1cnI1dHVONA==" target="_blank" rel="noopener noreferrer">
+                        <img src="images/icons/instagram.svg" alt="Instagram" class="icon-svg">
+                    </a>
+                    <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="images/icons/tiktok.svg" alt="TikTok" class="icon-svg">
+                    </a>
+                    <a href="https://wa.me/51900962294" target="_blank" rel="noopener noreferrer">
+                        <img src="images/icons/whatsapp.svg" alt="WhatsApp" class="icon-svg">
+                    </a>
+                </div>
+
+                <div class="language-selector">
+                    <button id="btn-es" class="active">ES</button>
+                    |
+                    <button id="btn-en">EN</button>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#pozas" data-translate="nav-pozas">Pozas Termales</a></li>
+                    <li><a href="#kayak" data-translate="nav-kayak">Kayak</a></li>
+                    <li><a href="#actividades" data-translate="nav-actividades">Actividades</a></li>
+                    <li><a href="#turismo" data-translate="nav-turismo">Puntos Turísticos</a></li>
+                    <li><a href="#artesanias" data-translate="nav-artesanias">Artesanías</a></li>
+                    <li><a href="#contacto" data-translate="nav-contacto">Contáctanos</a></li>
+                    <li><a href="#politicas" data-translate="nav-politicas">Políticas de Pago</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="hero" class="hero-section">
+            <div class="video-container">
+                <video id="hero-video" controls poster="images/presentacion/banner-yanque.jpg">
+                    <source src="https://www.facebook.com/share/r/1JJpqMohFA/" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+            </div>
+        </section>
+
+        <section id="experiencias" class="grid-experiencias">
+            <div id="pozas" class="card-estrella">
+                <h2 data-translate="titulo-pozas">Pozas Termales</h2>
+                <p data-translate="desc-pozas">Disfruta de nuestras relajantes aguas termales de 39°C - 40°C, ubicadas estratégicamente a las orillas del imponente río en Yanque.</p>
+            </div>
+            
+            <div id="kayak" class="card-estrella">
+                <h2 data-translate="titulo-kayak">Kayak</h2>
+                <p data-translate="desc-kayak">Experimenta una navegación segura y emocionante en nuestra poza natural, rodeado de paisajes majestuosos entre montañas.</p>
+            </div>
+        </section>
+
+        <section id="actividades" class="seccion-actividades">
+            <h2 class="section-title" data-translate="titulo-actividades">Actividades Secundarias</h2>
+            <div class="cards-container">
+                
+                <div class="card-actividad" data-actividad="camping" style="background-image: url('images/actividades/camping-bg.jpg');">
+                    <div class="card-overlay">
+                        <h3 data-translate="act-camping">Camping</h3>
+                    </div>
+                </div>
+
+                <div class="card-actividad" data-actividad="pesca" style="background-image: url('images/actividades/pesca-bg.jpg');">
+                    <div class="card-overlay">
+                        <h3 data-translate="act-pesca">Pesca Deportiva</h3>
+                    </div>
+                </div>
+
+                <div class="card-actividad" data-actividad="parrilla" style="background-image: url('images/actividades/parrilla-bg.jpg');">
+                    <div class="card-overlay">
+                        <h3 data-translate="act-parrilla">Zonas de Parrilla</h3>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="turismo" class="seccion-cultura">
+            <h2 class="section-title" data-translate="titulo-turismo">Puntos Turísticos</h2>
+            <div class="galeria-turismo">
+                <div class="item-turismo" data-translate="tur-mirador">Mirador del Río Colca</div>
+                <div class="item-turismo" data-translate="tur-occolle">Anfiteatro de Occolle</div>
+                <div class="item-turismo" data-translate="tur-tumbas">Tumbas Colgantes</div>
+                <div class="item-turismo" data-translate="tur-uyouyo">Complejo de Uyo Uyo</div>
+            </div>
+        </section>
+
+        <section id="artesanias" class="seccion-artesanias">
+            <h2 class="section-title" data-translate="titulo-artesanias">Artesanías de Yanque</h2>
+            <p data-translate="desc-artesanias">Una exposición limpia que rinde homenaje a nuestra identidad textil bordada y productos locales.</p>
+        </section>
+
+        <section id="politicas" class="seccion-politicas">
+            <h2 class="section-title" data-translate="titulo-politicas">Políticas de Pago</h2>
+            <p data-translate="desc-politicas">Información transparente sobre reservas, cancelaciones y métodos de pago aceptados.</p>
+        </section>
+
+    </main>
+
+    <footer id="contacto" class="main-footer">
+        <div class="footer-content">
+            <p class="company-name">Las Colcas © 2026</p>
+            <p class="contact-email">
+                <a href="mailto:magalymamani84@gmail.com">magalymamani84@gmail.com</a>
+            </p>
+        </div>
+    </footer>
+
+    <div id="modal-dinamico" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body-content">
+                </div>
+        </div>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
