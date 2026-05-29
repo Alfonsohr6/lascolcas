@@ -1,12 +1,12 @@
 /* ==========================================================================
-   1. VARIABLES GLOBALES Y RESETEO (Minimalismo Absoluto)
+   1. VARIABLES DE MARCA Y CONFIGURACIÓN INICIAL (Minimalismo Rústico)
    ========================================================================== */
 :root {
-    --bg-principal: #FDFBF7;   /* Crema Hueso: Premium y rústico */
-    --color-primario: #52B2CF; /* Turquesa Colcas: Títulos y acentos */
-    --color-secundario: #4A3319;/* Marrón Tierra: Texto suave sin usar negro */
-    --color-acento: #556B2F;    /* Verde Oliva: Estados interactivos e iconos */
-    --fuente-principal: 'Arial', sans-serif;
+    --bg-principal: #FDFBF7;     /* Crema Hueso: Fondo rústico y limpio */
+    --color-primario: #52B2CF;   /* Turquesa Colcas: Acentos y badges */
+    --color-secundario: #4A3319; /* Marrón Tierra: Texto y contrastes elegantes */
+    --color-acento: #556B2F;     /* Verde Oliva: Detalles e interactividad */
+    --fuente-global: 'Arial', sans-serif;
 }
 
 * {
@@ -17,14 +17,19 @@
 
 html {
     scroll-behavior: smooth;
+    /* Evita que el header fijo tape el contenido al usar enlaces del menú */
+    scroll-padding-top: 140px; 
 }
 
 body {
     background-color: var(--bg-principal);
     color: var(--color-secundario);
-    font-family: var(--fuente-principal);
+    font-family: var(--fuente-global);
     line-height: 1.6;
-    font-weight: 300; /* Tipografía fina */
+    font-weight: 300; /* Tipografía delgada y premium */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 a {
@@ -34,92 +39,119 @@ a {
 }
 
 /* ==========================================================================
-   2. EL ENCABEZADO (Main Header - Layout de Dos Bloques)
+   2. ENCABEZADO FIJO (Main Header)
+   ========================================================================== */
+/* ==========================================================================
+   ENCABEZADO PREMIUM CON BALANCE SIMÉTRICO EXTERIOR
    ========================================================================== */
 .main-header {
-    display: flex;
     background-color: var(--bg-principal);
-    padding: 1.5rem 2rem;
-    border-bottom: 1px solid rgba(74, 51, 25, 0.1);
+    display: flex;
+    justify-content: space-between; /* ¡Esta es la clave! Empuja el logo al extremo izquierdo y la navegación al extremo derecho */
+    align-items: center;            /* Alineación vertical perfecta al centro */
+    padding: 1rem 4rem;             /* Un poco más de aire a los lados para que respire en pantallas grandes */
+    border-bottom: 1px solid rgba(74, 51, 25, 0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-/* Lado Izquierdo - Logo Circular */
-.header-left {
-    flex: 0 0 120px;
+/* --- BLOQUE IZQUIERDO: Identidad de Marca --- */
+.header-identity {
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
-.logo-circular {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-/* Lado Derecho - Bloque de Utilidades y Navegación */
-.header-right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-left: 2rem;
-}
-
-/* Nivel Superior: Barra de Utilidades, Redes e Idioma */
-.utility-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.85rem;
-    padding-bottom: 0.5rem;
-}
-
-.contact-phone {
+.header-identity .logo-link {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-}
-
-.contact-phone a:hover {
-    color: var(--color-primario);
-}
-
-.icon-svg {
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-    transition: transform 0.3s ease;
-}
-
-.social-networks {
-    display: flex;
     gap: 1.2rem;
 }
 
-.social-networks a:hover .icon-svg {
-    transform: scale(1.1);
-    filter: drop-shadow(0px 2px 4px rgba(82, 178, 207, 0.4));
+.logo-circular {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(74, 51, 25, 0.05);
 }
 
-/* Selector de Idioma */
+/* Tipografía Líquida Cursiva (Simula el cauce y movimiento del agua) */
+.brand-title {
+    font-family: var(--fuente-liquida);
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-secundario);
+    transition: color 0.4s ease;
+}
+
+.header-identity:hover .brand-title {
+    color: var(--color-primario); /* Reflejo turquesa de agua viva al pasar el mouse */
+}
+
+/* --- BLOQUE DERECHO: Navegación + Idioma empujados al extremo --- */
+.header-navigation {
+    display: flex;
+    align-items: center;
+    gap: 3rem; /* Espaciado fijo entre el bloque del menú y el selector ES|EN */
+}
+
+/* El menú como una sola línea horizontal compacta */
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2.2rem; /* Separación interna entre cada enlace */
+}
+
+.main-nav a {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+    padding-bottom: 0.3rem;
+    position: relative;
+    color: var(--color-secundario);
+}
+
+.main-nav a:hover {
+    color: var(--color-primario);
+}
+
+/* Animación de onda expansiva suave en el subrayado */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-primario);
+    transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* Selector de Idioma integrado fluidamente al final */
 .language-selector {
+    font-size: 0.8rem;
     letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
 .language-selector button {
     background: none;
     border: none;
     color: var(--color-secundario);
-    font-family: var(--fuente-principal);
     cursor: pointer;
-    font-weight: 300;
-    padding: 0 0.2rem;
-    transition: color 0.3s ease, font-weight 0.3s ease;
+    font-family: var(--fuente-global);
+    font-weight: 400;
+    font-size: 0.8rem;
+    transition: color 0.3s ease;
 }
 
 .language-selector button.active,
@@ -128,48 +160,30 @@ a {
     font-weight: bold;
 }
 
-/* Nivel Inferior: Menú de Navegación Principal */
-.main-nav ul {
-    display: flex;
-    list-style: none;
-    justify-content: flex-start;
-    gap: 2rem;
+.separator {
+    color: rgba(74, 51, 25, 0.25);
+    font-size: 0.8rem;
+    user-select: none;
 }
-
-.main-nav a {
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding-bottom: 0.3rem;
-    position: relative;
-}
-
-.main-nav a:hover {
-    color: var(--color-primario);
-}
-
-/* Línea minimalista interactiva al pasar el mouse */
-.main-nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--color-primario);
-    transition: width 0.3s ease;
-}
-
-.main-nav a:hover::after {
-    width: 100%;
-}
-
+    
 /* ==========================================================================
-   3. CONTENEDOR PRINCIPAL Y SECCIONES
+   3. CONTENIDO (Secciones y Tarjetas de Servicio)
    ========================================================================== */
+.hero-section {
+    width: 100%;
+    background-color: #000;
+}
+
+.video-container video {
+    width: 100%;
+    display: block;
+    max-height: 75vh;
+    object-fit: cover;
+}
+
 .section-title {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--color-primario);
@@ -177,169 +191,245 @@ a {
     font-weight: 300;
 }
 
-/* Bloque A: Sección Hero (Impacto Visual) */
-.hero-section {
-    width: 100%;
-    margin-bottom: 4rem;
-}
-
-.video-container {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    background-color: #000;
-}
-
-.video-container video {
-    width: 100%;
-    display: block;
-    max-height: 80vh; /* Para que no sature pantallas gigantes */
-    object-fit: cover;
-}
-
-/* Bloque B: Experiencias Estrella (Grid Layout) */
+/* Grid de Pozas y Kayak */
 .grid-experiencias {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 4rem;
+    gap: 3rem;
     max-width: 1200px;
-    margin: 0 auto 6rem auto;
+    margin: 5rem auto;
     padding: 0 2rem;
 }
 
-.card-estrella {
-    background-color: transparent;
-    padding: 2rem;
-    border-left: 2px solid var(--color-primario); /* Detalle elegante rústico */
-}
-
-.card-estrella h2 {
-    color: var(--color-primario);
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    font-weight: 400;
-}
-
-/* Bloque C: Actividades Secundarias (Formato de Tarjetas / Cards) */
-.seccion-actividades {
-    max-width: 1200px;
-    margin: 0 auto 6rem auto;
-    padding: 0 2rem;
-}
-
-.cards-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
-.card-actividad {
-    height: 350px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 4px;
+.experiencia-card {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(74, 51, 25, 0.06);
+    border-radius: 6px;
     overflow: hidden;
-    cursor: pointer;
-    position: relative;
-    box-shadow: 0 4px 15px rgba(74, 51, 25, 0.05);
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 12px rgba(74, 51, 25, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card-actividad:hover {
-    transform: translateY(-5px);
+.experiencia-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(74, 51, 25, 0.06);
 }
 
-/* Capa oscura translúcida para legibilidad de texto */
-.card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+.card-image-box {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.card-img {
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(74, 51, 25, 0.7) 10%, rgba(0,0,0,0.1) 100%);
-    display: flex;
-    align-items: flex-end;
+    object-fit: cover;
+}
+
+.card-content {
     padding: 2rem;
-    transition: background 0.3s ease;
 }
 
-.card-actividad:hover .card-overlay {
-    background: linear-gradient(to top, rgba(82, 178, 207, 0.8) 10%, rgba(0,0,0,0.2) 100%);
+.card-badge {
+    display: inline-block;
+    background-color: rgba(82, 178, 207, 0.1);
+    color: var(--color-primario);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.25rem 0.7rem;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-bottom: 0.8rem;
 }
 
-.card-overlay h3 {
-    color: #FFF;
+.card-title {
     font-size: 1.4rem;
-    font-weight: 300;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+}
+
+.card-description {
+    font-size: 0.95rem;
+    color: rgba(74, 51, 25, 0.85);
+    margin-bottom: 1.5rem;
+}
+
+.card-footer-info {
+    border-top: 1px solid rgba(74, 51, 25, 0.06);
+    padding-top: 1rem;
+}
+
+.card-detail {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--color-acento);
+    font-weight: bold;
     letter-spacing: 1px;
 }
 
-/* Bloque D: Entorno, Cultura y Galerías Limpias */
-.seccion-cultura, .seccion-artesanias, .seccion-politicas {
+/* Sección Artesanías */
+.seccion-artesanias {
     max-width: 1200px;
-    margin: 0 auto 6rem auto;
+    margin: 6rem auto;
+    padding: 0 2rem;
+}
+
+.artesanias-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    background-color: #FFFFFF;
+    padding: 2.5rem;
+    border-radius: 6px;
+    border: 1px solid rgba(74, 51, 25, 0.06);
+}
+
+.artesanias-img-box {
+    flex: 1;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.artesanias-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.artesanias-text {
+    flex: 1;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* Sección Políticas de Pago */
+.seccion-politicas {
+    max-width: 800px;
+    margin: 6rem auto;
     padding: 0 2rem;
     text-align: center;
 }
 
-.galeria-turismo {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-}
-
-.item-turismo {
-    background: #FFF;
-    border: 1px solid rgba(74, 51, 25, 0.08);
-    padding: 2rem 1rem;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-}
-
-.item-turismo:hover {
-    border-color: var(--color-primario);
-    color: var(--color-primario);
-    background-color: rgba(82, 178, 207, 0.02);
-}
-
-.seccion-artesanias p, .seccion-politicas p {
-    max-width: 700px;
-    margin: 0 auto;
-    font-size: 1.1rem;
+.politicas-card {
+    background-color: #FFFFFF;
+    padding: 2.5rem;
+    border-radius: 6px;
+    border: 1px solid rgba(74, 51, 25, 0.06);
+    font-size: 1.05rem;
 }
 
 /* ==========================================================================
-   4. PIE DE PÁGINA (Footer Semántico)
+   4. PIE DE PÁGINA COMPLETO (Footer Maquetado de 3 Columnas)
    ========================================================================== */
 .main-footer {
     background-color: var(--color-secundario);
     color: var(--bg-principal);
-    padding: 3rem 2rem;
-    text-align: center;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
+    padding: 4rem 2rem 2rem 2rem;
+    margin-top: auto;
 }
 
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(253, 251, 247, 0.1);
+    padding-bottom: 3rem;
 }
 
-.contact-email a {
+.footer-column h4 {
     color: var(--color-primario);
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
     font-weight: 400;
 }
 
-.contact-email a:hover {
-    color: #FFF;
-    text-decoration: underline;
+.footer-column p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.footer-icon {
+    width: 16px;
+    height: 16px;
+    filter: invert(1); /* Pone los iconos vectoriales en color blanco */
+}
+
+.footer-contact-item a:hover, .email-link:hover {
+    color: var(--color-primario);
+}
+
+.email-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.map-placeholder {
+    margin-top: 1rem;
+    background-color: rgba(253, 251, 247, 0.05);
+    border: 1px dashed rgba(253, 251, 247, 0.2);
+    padding: 1rem;
+    font-size: 0.8rem;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.map-placeholder:hover {
+    background-color: rgba(253, 251, 247, 0.1);
+    color: var(--color-primario);
+}
+
+/* Fila de Cierre del Footer */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 2rem auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.footer-socials a:hover .social-icon {
+    transform: scale(1.15);
+    filter: invert(1) drop-shadow(0 0 4px var(--color-primario));
+}
+
+.copyright {
+    font-size: 0.8rem;
+    opacity: 0.6;
 }
 
 /* ==========================================================================
-   5. ARQUITECTURA DE INTERFAZ LIGHT (Ventanas Modales del script.js)
+   5. INTERFAZ MODAL OCULTA
    ========================================================================== */
 .modal {
     position: fixed;
@@ -347,28 +437,24 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(74, 51, 25, 0.5); /* Sombra suave */
+    background-color: rgba(74, 51, 25, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2000;
-    opacity: 1;
-    transition: opacity 0.3s ease;
 }
 
 .modal.hidden {
     display: none;
-    opacity: 0;
 }
 
 .modal-content {
     background-color: var(--bg-principal);
     padding: 3rem;
     border-radius: 4px;
-    max-width: 600px;
+    max-width: 550px;
     width: 90%;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .close-modal {
@@ -376,20 +462,36 @@ a {
     top: 1rem;
     right: 1.5rem;
     font-size: 2rem;
-    color: var(--color-secundario);
     cursor: pointer;
-    transition: color 0.3s ease;
 }
 
-.close-modal:hover {
-    color: var(--color-primario);
+/* ==========================================================================
+   6. RESPONSIVIDAD (Layout móvil impecable)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .main-header {
+        padding: 1rem 2rem;
+    }
+    .header-navigation {
+        gap: 2rem;
+    }
+    .main-nav ul {
+        gap: 1.5rem;
+    }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
 }
 
-/* Responsividad básica para móviles */
 @media (max-width: 768px) {
-    .main-header { flex-direction: column; align-items: center; gap: 1rem; }
-    .header-right { padding-left: 0; gap: 1rem; }
-    .utility-bar { flex-direction: column; gap: 0.8rem; }
-    .main-nav ul { flex-wrap: wrap; justify-content: center; gap: 1rem; }
-    .grid-experiencias, .cards-container, .galeria-turismo { grid-template-columns: 1fr; gap: 2rem; }
+    .main-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .header-right { padding-left: 0; align-items: center; gap: 1rem; }
+    .main-nav ul { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+    .grid-experiencias { grid-template-columns: 1fr; margin: 3rem auto; }
+    .artesanias-container { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
+    .artesanias-text { text-align: center; }
+    
 }
