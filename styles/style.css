@@ -466,9 +466,13 @@ a {
 }
 
 /* ==========================================================================
-   6. RESPONSIVIDAD (Layout móvil impecable)
+   6. RESPONSIVIDAD SENSORIAL (Adaptabilidad Avanzada para Dispositivos)
    ========================================================================== */
-@media (max-width: 900px) {
+
+/* ------------------------------------------------------------------
+   NIVEL A: TABLETS Y COMPUTADORAS PEQUEÑAS (Ancho máximo: 992px)
+   ------------------------------------------------------------------ */
+@media (max-width: 992px) {
     .main-header {
         padding: 1rem 2rem;
     }
@@ -478,20 +482,152 @@ a {
     .main-nav ul {
         gap: 1.5rem;
     }
-    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .grid-experiencias {
+        gap: 2rem;
+        padding: 0 1.5rem;
+    }
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablet */
+        gap: 2.5rem;
+    }
 }
 
+/* ------------------------------------------------------------------
+   NIVEL B: SMARTPHONES ESTÁNDAR - GALAXY A56 (Ancho máximo: 768px)
+   Diseñado para resoluciones de 390px a 412px de ancho
+   ------------------------------------------------------------------ */
 @media (max-width: 768px) {
+    /* Reorganizamos el header para que fluya en bloque */
     .main-header {
+        flex-direction: column;
+        position: relative; /* Permite posicionamiento absoluto interno */
+        padding: 1.5rem 1rem 1rem 1rem;
+        text-align: center;
+        gap: 1.2rem;
+    }
+
+    /* Tu Ley: Logo y Título apilados verticalmente y centrados */
+    .header-identity {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .header-identity .logo-link {
+        flex-direction: column; /* Pone el logo ARRIBA y el texto ABAJO */
+        gap: 0.6rem;
+    }
+
+    .logo-circular {
+        width: 70px; /* Tamaño ideal en teléfono */
+        height: 70px;
+    }
+
+    .brand-title {
+        font-size: 1.8rem;
+    }
+
+    /* Bloque de navegación que pasa ABAJO de la identidad */
+    .header-navigation {
+        width: 100%;
         flex-direction: column;
         gap: 1rem;
     }
 
-    .header-right { padding-left: 0; align-items: center; gap: 1rem; }
-    .main-nav ul { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
-    .grid-experiencias { grid-template-columns: 1fr; margin: 3rem auto; }
-    .artesanias-container { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
-    .artesanias-text { text-align: center; }
-    
+    /* Tu Ley: Menú centrado debajo de la marca */
+    .main-nav {
+        width: 100%;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;       /* Si no caben en una línea, bajan ordenadamente */
+        justify-content: center;
+        gap: 1rem 1.2rem;      /* Espaciado horizontal y vertical óptimo para dedos */
+    }
+
+    .main-nav a {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+
+    /* Tu Ley: El idioma se clava de forma absoluta arriba a la derecha */
+    .language-selector {
+        position: absolute;
+        top: 1.2rem;
+        right: 1.2rem;
+        background-color: rgba(74, 51, 25, 0.04);
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+    }
+
+    /* --- Adaptación del Resto del Contenido en Móvil --- */
+    .grid-experiencias {
+        grid-template-columns: 1fr; /* Una sola tarjeta por fila */
+        margin: 3rem auto;
+    }
+
+    .artesanias-container {
+        flex-direction: column; /* Imagen arriba, texto abajo */
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .artesanias-img-box {
+        width: 100%;
+        height: 220px;
+    }
+
+    .artesanias-text {
+        text-align: center;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr; /* Todo en una sola lista vertical */
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .footer-contact-item {
+        justify-content: center; /* Centra iconos, WhatsApp y teléfonos */
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}
+
+/* ------------------------------------------------------------------
+   NIVEL C: SMARTPHONES ANGOSTOS / ANALÓGICOS - GALAXY A21 (Ancho máximo: 360px)
+   Ajustes críticos de micro-pantalla para evitar desbordamientos
+   ------------------------------------------------------------------ */
+@media (max-width: 360px) {
+    .main-header {
+        padding: 1.2rem 0.8rem 1rem 0.8rem;
+    }
+
+    .brand-title {
+        font-size: 1.6rem; /* Reducimos un pelín para que nunca salte en dos renglones */
+    }
+
+    .main-nav ul {
+        gap: 0.8rem 1rem; /* Enlaces más compactos para que entren cómodos */
+    }
+
+    .main-nav a {
+        font-size: 0.75rem;
+    }
+
+    .language-selector {
+        top: 0.8rem;
+        right: 0.8rem;
+    }
+
+    .card-content {
+        padding: 1.2rem; /* Menos bordes internos para ganar espacio de lectura */
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+    }
 }
