@@ -475,6 +475,10 @@ a {
 @media (max-width: 992px) {
     .main-header {
         padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: var(--bg-principal);
     }
     .header-navigation {
         gap: 2rem;
@@ -498,11 +502,15 @@ a {
    ------------------------------------------------------------------ */
 @media (max-width: 768px) {
     .main-header {
+        display: flex;
         flex-direction: column;
-        position: relative;
         padding: 1.5rem 1rem 1rem 1rem;
         text-align: center;
         gap: 1rem;
+        position: sticky; 
+        top: 0;
+        z-index: 1000;
+        background-color: var(--bg-principal);
     }
 
     /* Ley: Logo y Título apilados verticalmente y centrados */
@@ -612,6 +620,10 @@ a {
     .main-header {
         padding: 1.2rem 0.5rem 1rem 0.5rem;
         gap: 0.8rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: var(--bg-principal);
     }
 
     .logo-circular {
