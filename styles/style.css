@@ -198,8 +198,7 @@ a {
    ========================================================================== */
 .filosofia-section {
     padding: 5rem 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
     background-color: var(--bg-principal);
 }
 
@@ -215,11 +214,14 @@ a {
     font-weight: 400;
 }
 
-/* Contenedor que divide la página exactamente a la mitad */
+/* 3. ¡Ajuste Maestro! El contenedor interno es el que ahora protege el ancho */
 .filosofia-container {
     display: flex;
     justify-content: space-between;
-    gap: 4rem; /* Separación elegante entre las dos columnas */
+    gap: 4rem;
+    max-width: 1200px; /* Amarramos los textos para que no se peguen a los bordes físicos del monitor */
+    margin: 0 auto;    /* Centra el bloque de las dos columnas de forma invisible */
+    padding: 0 4rem;   /* Le devolvemos el aire elegante a los costados de la lectura */
 }
 
 /* Cajas individuales para Misión y Visión */
