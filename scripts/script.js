@@ -27,13 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
             "titulo-pozas": "Pozas Termales",
             "titulo-kayak": "Kayak",
             "label-precio-pozas": "Adulto / Niño (1h)",
-            "label-precio-kayak": "Adulto / Niño (40m-1h)",
+            "label-precio-kayak": "Adulto / Niño (1h)",
             "btn-detalles": "Detalles",
             "btn-agendar": "Agendar",
             
             // Sección Artesanías
-            "titulo-artesanias": "Artesanías de Yanque",
-            "desc-artesanias": "Una exposición limpia que rinde homenaje a nuestra identidad textil bordada y productos locales. Ofrecemos a nuestros visitantes piezas únicas hechas a mano por artesanos de Yanque, perfectas para llevarse un recuerdo vivo del Valle del Colca.",
+           "titulo-artesanias": "Artesanías de Yanque",
+            "desc-artesanias": "En Las Colcas también valoramos y compartimos la esencia cultural del valle del Cañón del Colca a través de artesanías elaboradas con dedicación e inspiración en las tradiciones andinas de Yanque. Cada pieza refleja el arte, los colores y la identidad de nuestra tierra, combinando trabajo manual, detalles bordados y diseños únicos que transmiten calidez y autenticidad. Entre nuestras creaciones encontrarás bolsos, marcapáginas, individuales bordados y otros productos artesanales hechos con mucho detalle y dedicación por nuestras manos.",
+            "titulo-galeria-taller": "Nuestro Taller y Creaciones",
             
             // Sección Pie de Página (Footer)
             "footer-horario-tit": "Horario de Reservas",
@@ -63,14 +64,15 @@ document.addEventListener("DOMContentLoaded", () => {
             "titulo-pozas": "Thermal Pools",
             "titulo-kayak": "Kayak",
             "label-precio-pozas": "Adult / Child (1h)",
-            "label-precio-kayak": "Adult / Child (40m-1h)",
+            "label-precio-kayak": "Adult / Child (1h)",
             "btn-detalles": "Details",
             "btn-agendar": "Book Now",
             
             // Handicrafts Section
             "titulo-artesanias": "Yanque Handicrafts",
-            "desc-artesanias": "A clean exhibition paying tribute to our embroidered textile identity and local products. We offer our visitors unique handmade pieces created by Yanque artisans, perfect for taking home a living memory of the Colca Valley.",
-            
+            "desc-artesanias": "At Las Colcas, we also value and share the cultural essence of the Colca Canyon Valley through handicrafts made with dedication and inspired by the Andean traditions of Yanque. Each piece reflects the art, colors, and identity of our land, combining manual work, embroidered details, and unique designs that convey warmth and authenticity. Among our creations, you will find bags, bookmarks, embroidered placemats, and other artisanal products crafted with great detail and dedication by our own hands.",
+            "titulo-galeria-taller": "Our Workshop and Creations",
+
             // Footer Section
             "footer-horario-tit": "Booking Schedule",
             "footer-horario-desc": "Monday to Sunday<br>7:00 AM – 9:00 PM",
@@ -149,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
             kayak: {
                 titulo: "Navegación en Kayak",
                 descripcion: `
-                    <p>Navegar en kayak por las tranquilas aguas del río del Cañón del Colca es una experiencia que combina aventura, naturaleza y contemplación en uno de los paisajes más especiales de Yanque.</p>
+                    <p>Navegar en kayak por las tranquilas aguas del río del Cañón del Colca es una experiencia que combina aventura, naturaleza y contemplación en uno de los landscapes más especiales de Yanque.</p>
                     <p>Las Colcas está rodeado de imponentes montañas que forman un pequeño cañón esculpido por el río Colca, creando un espacio sereno, seguro y libre de corrientes fuertes, ideal tanto para quienes desean remar por primera vez como para quienes buscan disfrutar del paisaje de una manera diferente.</p>
                     <p>La experiencia incluye chalecos salvavidas, remos y una breve guía con técnicas básicas de remo antes de ingresar al agua, brindando seguridad y confianza durante toda la actividad.</p>
                 `
@@ -183,39 +185,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Función encargada de estructurar el modal según el servicio y el idioma activo
     function abrirModal(servicio) {
-        // Leemos qué idioma seleccionó la sección superior
         const idiomaActivo = window.currentLanguage || "es";
         
-        // Control de protección preventiva: si los elementos clave no existen en el HTML, cancelamos la ejecución
         if (!modal || !modalTitulo || !modalCuerpo || !infoModales[idiomaActivo] || !infoModales[idiomaActivo][servicio]) {
             return;
         }
 
-        // Inyectamos de forma limpia los textos estructurados
+        // Inyección de textos estructurados
         modalTitulo.textContent = infoModales[idiomaActivo][servicio].titulo;
         modalCuerpo.innerHTML = infoModales[idiomaActivo][servicio].descripcion;
 
-        // Modificamos las clases CSS para hacerlo visible en pantalla
+        // Quitamos la clase oculta para permitir que el modal use su display nativo
         modal.classList.remove("hidden");
-        modal.classList.add("modal-visible");
         
-        // Bloqueamos el scroll del cuerpo principal de la web mientras el modal esté encima
+        // Bloqueamos el scroll de fondo
         document.body.style.overflow = "hidden";
     }
 
     // Función encargada de restaurar el estado original oculto
     function cerrarModal() {
         if (!modal) return;
-        modal.classList.remove("modal-visible");
+        
+        // Simplemente añadimos de nuevo la clase de control oculto
         modal.classList.add("hidden");
-        document.body.style.overflow = ""; // Devolvemos el scroll normal a la web
+        document.body.style.overflow = ""; 
     }
 
-    // Buscamos todos los botones que tengan la clase nativa para abrir los detalles de tarjetas
+    // Vinculación de los eventos de clic en los botones de detalles
     const botonesDetalles = document.querySelectorAll(".card-btn-details");
     botonesDetalles.forEach(boton => {
         boton.addEventListener("click", (e) => {
-            // Extraemos el valor guardado en el atributo personalizado 'data-modal' (pozas o kayak)
             const servicio = e.target.getAttribute("data-modal");
             abrirModal(servicio);
         });
@@ -226,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btnCerrarModal.addEventListener("click", cerrarModal);
     }
     
-    // Control de cierre de confort: si el usuario hace clic fuera de la caja blanca del modal, este se cierra
+    // Control de cierre de confort al hacer clic en el fondo gris externo
     if (modal) {
         modal.addEventListener("click", (e) => {
             if (e.target === modal) {
