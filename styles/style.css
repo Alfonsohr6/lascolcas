@@ -540,16 +540,15 @@ a {
 /* Ajuste del contenedor principal para asimilar fotos verticales de alta calidad */
 .artesanias-container {
     display: flex;
-    gap: 3rem;
-    align-items: center;
-    margin-top: 2rem;
+    gap: 4rem;                  /* Espacio generoso para que no se peleen ni se empujen */
+    align-items: flex-start;    /* Alinea el inicio de las letras perfectamente con el borde superior de la foto */
+    margin-top: 2.5rem;
 }
 
-/* Control estricto de la caja de la imagen para que no deforme la facha de la dueña */
+/* Control de la caja para que se acople perfectamente a la altura de las letras */
 .artesanias-img-box {
-    flex: 1;
-    max-width: 450px;
-    height: 550px; /* Altura generosa para lucir la foto vertical */
+    width: 320px;          /* Ancho fijo perfecto para mantener la escala vertical de la artesana */
+    align-self: stretch;   /* ¡MAGIA! Fuerza a la foto a tener EXACTAMENTE la misma altura que el bloque de texto */
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(74, 51, 25, 0.08);
@@ -558,13 +557,27 @@ a {
 .artesanias-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Recorta y centra la imagen inteligentemente en el recuadro */
+    object-fit: cover;     /* Hace que la foto de la dueña cubra todo el recuadro sin deformar su facha */
     object-position: center;
     transition: transform 0.5s ease;
 }
 
 .artesanias-img:hover {
-    transform: scale(1.03); /* Efecto sutil de zoom al pasar el mouse */
+    transform: scale(1.03);
+}
+
+/* El bloque de las letras se expande libremente */
+.artesanias-text {
+    flex: 1;               /* Absorbe todo el ancho restante sin pelear ni empujar a la foto */
+    display: flex;
+    align-items: center;   /* Centra el párrafo verticalmente si el texto es ligeramente más corto */
+}
+
+.artesanias-text p {
+    text-align: justify;   /* Distribución limpia y uniforme en los bordes */
+    font-size: 1.15rem;    /* Un toque de tamaño para rellenar la altura de forma premium */
+    line-height: 1.9;      /* Espaciado elegante para que el texto respire y sume altura armónica */
+    margin: 0;
 }
 
 /* Espacio reservado para la nueva sección de fotos de Google Sheets */
@@ -922,23 +935,36 @@ a {
     }
 
     .artesanias-container {
-        flex-direction: column; /* Pone la foto arriba y el texto abajo en celulares */
-        gap: 1.5rem;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
     }
 
     .artesanias-img-box {
-        max-width: 100%;
         width: 100%;
-        height: 400px; /* Reducimos la altura en móviles para que no consuma toda la pantalla */
+        max-width: 280px;
+        height: 340px;      /* Altura fija y cómoda para la foto en vertical dentro del celular */
+        align-self: auto;   /* Cancela el estiramiento de escritorio */
+        margin: 0 auto;
+    }
+
+    .artesanias-text p {
+        text-align: left;   /* Lectura natural en pantallas táctiles */
+        font-size: 1rem;
+        line-height: 1.6;
+        padding: 0 0.5rem;
+    }
+
+    .artesanias-img-box {
+        width: 100%;
+        max-width: 280px;  /* Centra la foto vertical en el medio del celular */
+        height: 320px;     /* Altura perfecta para pantallas móviles */
+        margin: 0 auto;    /* Asegura que quede bien alineada al centro */
     }
     
     .grid-galeria-taller {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Dos fotos por fila en pantallas chicas */
         gap: 0.8rem;
-    }
-
-    .artesanias-text {
-        text-align: center;
     }
 
     .footer-grid {
