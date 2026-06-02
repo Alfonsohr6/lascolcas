@@ -174,12 +174,95 @@ a {
     background-color: #000;
 }
 
-.video-container video {
+/* ==========================================================================
+   ESTILOS DEL BANNER PRINCIPAL (Efecto Portada de Perfil)
+   ========================================================================== */
+.video-container {
+    width: 100%;
+    background-color: var(--bg-principal);
+    overflow: hidden;
+}
+
+/* Aplicamos las mismas reglas exactas del video a la nueva imagen banner */
+.video-container video,
+.hero-banner-img {
     width: 100%;
     display: block;
-    max-height: 75vh;
-    object-fit: cover;
+    max-height: 75vh;  /* Cubre el 75% del alto de la pantalla del usuario */
+    object-fit: cover; /* Recorta y centra la foto automáticamente como portada de Facebook */
+    object-position: center; /* Asegura que el paisaje de Yanque quede centrado */
 }
+
+/* ==========================================================================
+   SECCIÓN SOBRE NOSOTROS (Misión y Visión Divididas)
+   ========================================================================== */
+.filosofia-section {
+    padding: 5rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--bg-principal);
+}
+
+/* Título Principal en Color Primario (Turquesa Colcas) */
+.filosofia-title {
+    font-family: var(--fuente-global);
+    color: var(--color-primario);
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    font-weight: 400;
+}
+
+/* Contenedor que divide la página exactamente a la mitad */
+.filosofia-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem; /* Separación elegante entre las dos columnas */
+}
+
+/* Cajas individuales para Misión y Visión */
+.filosofia-box {
+    flex: 1; /* Hace que ambas cajas midan exactamente el 50% del espacio disponible */
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* Subtítulos internos (Misión / Visión) */
+.filosofia-subtitle {
+    font-family: var(--fuente-global);
+    color: var(--color-secundario);
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* Línea decorativa sutil debajo de cada subtítulo */
+.filosofia-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-primario);
+}
+
+/* El texto intacto del cliente con formato elegante y legible */
+.filosofia-text {
+    font-family: var(--fuente-global);
+    color: var(--color-secundario);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    text-align: justify; /* Justificado sutil para mantener el orden minimalista */
+    font-weight: 300;
+    opacity: 0.9;
+}
+
 
 .section-title {
     text-align: center;
@@ -483,6 +566,14 @@ a {
     .header-navigation {
         gap: 2rem;
     }
+
+    .filosofia-section {
+        padding: 4rem 2rem;
+    }
+    .filosofia-container {
+        gap: 2.5rem;
+    }
+    
     .main-nav ul {
         gap: 1.5rem;
     }
@@ -541,6 +632,21 @@ a {
         width: 100%;
         flex-direction: column;
         gap: 0.8rem;
+    }
+
+    .filosofia-title {
+        font-size: 1.8rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    /* En teléfonos (Galaxy A56) dejamos de dividir a la mitad y los apilamos verticalmente */
+    .filosofia-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .filosofia-subtitle {
+        font-size: 1.3rem;
     }
 
     .main-nav {
@@ -629,6 +735,15 @@ a {
     .logo-circular {
         width: 58px; /* Reducción milimétrica proporcional */
         height: 58px;
+    }
+
+    /* Ajustes milimétricos para pantallas angostas (Galaxy A21) */
+    .filosofia-section {
+        padding: 3rem 1rem;
+    }
+    .filosofia-text {
+        font-size: 0.9rem;
+        line-height: 1.7;
     }
 
     .brand-title {
