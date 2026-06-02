@@ -235,3 +235,98 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+/* ==========================================================================
+       SECCIÓN 6: MOTOR 3 - GALERÍA DINÁMICA DESDE GOOGLE SHEETS
+       ========================================================================== */
+
+    // 1. CONFIGURACIÓN DEL REPOSITORIO DE DATOS REAL DE LAS COLCAS
+    const SHEET_ID = 'e/2PACX-1vSccxABPgnZ2bXmu1biB3js9O_6zmoJkpHKuSCKOUbifO1f347AzyOlJRpTeUaqehALwMo4xmYOx72S'; 
+    const TAB_NAME = 'Hoja1'; 
+    
+    // URL optimizada en formato CSV usando el enlace de publicación directo
+    const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/pub?output=csv&sheet=${TAB_NAME}`;
+
+    const contenedorGaleria = document.getElementById("galeria-taller-dinamica");
+
+    // 2. FUNCIÓN PRINCIPAL DEL MOTOR 3
+    async function cargarGaleriaDesdeSheets() {
+        if (!contenedorGaleria) return;
+
+        try {
+            // Hacemos la llamada HTTP para despertar al Sheets en tiempo real
+            const respuesta = await fetch(SHEET_URL);
+            if (!respuesta.ok) throw new Error("Error de conexión con la base de datos de Sheets");
+            
+            const textoCsv = await respuesta.text();
+            
+            // Convertimos el texto CSV crudo en un array limpio de filas y columnas
+            const filas = parsearCSV(textoCsv);
+
+            // Si la hoja está vacía o solo tiene los títulos, avisamos al usuario con estilo
+            if (filas.length <= 1) {
+                contenedorGaleria.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color: var(--color-secundario); font-style: italic;">Próximamente más artesanías disponibles...</p>`;
+                return;
+            }
+
+            // Limpiamos el contenedor (borra cualquier mensaje de carga anterior)
+            contenedorGaleria.innerHTML = "";
+
+            // Empezamos en i = 1 para saltarnos la fila de títulos (id, link, titulo)
+            for (let i = 1; i < filas.length; i++) {
+                const columnas = filas[i];
+                
+                // Si la fila está rota o no tiene link, la ignoramos para que no rompa la web
+                if (columnas.length < 2 || !columnas[1]) continue;
+
+                const id = columnas[0].trim();
+                const linkImg = columnas[1].trim();
+                // Si no pusiste título, le clavamos uno por defecto muy profesional
+                const tituloText = columnas[2] ? columnas[2].trim() : "Artesanía Tradicional - Las Colcas";
+
+                // FABRICAMOS EL CONTENEDOR EN EL DOM (El bloque que tu CSS vuelve cuadrado)
+                const itemGaleria = document.createElement("div");
+                itemGaleria.classList.add("galeria-item");
+                itemGaleria.setAttribute("data-id", id);
+
+                // Inyectamos la imagen con carga perezosa (lazy) para que la web vuele en celulares
+                itemGaleria.innerHTML = `
+                    <img src="${linkImg}" alt="${tituloText}" title="${tituloText}" loading="lazy">
+                `;
+
+                // Lo metemos de cabeza a la malla inteligente (.grid-galeria-taller)
+                contenedorGaleria.appendChild(itemGaleria);
+            }
+
+        } catch (error) {
+            console.error("Falla crítica en Motor 3:", error);
+            contenedorGaleria.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color: var(--color-secundario);">Hubo un inconveniente al conectar con la galería. Por favor, refresca la página.</p>`;
+        }
+    }
+
+    // 3. PROCESADOR DE TEXTO PLANO (Parsea las comas y comillas del formato CSV)
+    function parsearCSV(texto) {
+        const lineas = texto.split(/\r?\n/);
+        return lineas.map(linea => {
+            const resultado = [];
+            let dentroDeComillas = false;
+            let entradaActual = "";
+
+            for (let i = 0; i < linea.length; i++) {
+                const char = linea[i];
+                if (char === '"') {
+                    dentroDeComillas = !dentroDeComillas;
+                } else if (char === ',' && !dentroDeComillas) {
+                    resultado.push(entradaActual);
+                    entradaActual = "";
+                } else {
+                    entradaActual += char;
+                }
+            }
+            resultado.push(entradaActual);
+            return resultado;
+        });
+    }
+
+    // 4. ARRANQUE AUTOMÁTICO
+    cargarGaleriaDesdeSheets();
