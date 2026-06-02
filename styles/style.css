@@ -474,6 +474,50 @@ a {
 }
 
 /* ==========================================================================
+   5. INTERFAZ MODAL OCULTA (Con Soporte de Scroll para Pantallas Chicas)
+   ========================================================================== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(74, 51, 25, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+/* CAJA BLANCA: Ajustada con límites físicos y scrollbox interno */
+.modal-content {
+    background-color: var(--bg-principal);
+    padding: 2.5rem 2rem; /* Reducimos levemente el aire interno para ganar espacio de lectura */
+    border-radius: 4px;
+    max-width: 550px;
+    width: 90%;
+    position: relative;
+    
+    /* 🛠️ SOLUCIÓN PARA GALAXY A56 / A21: */
+    max-height: 85vh;    /* El modal nunca medirá más del 85% del alto de la pantalla del celular */
+    overflow-y: auto;    /* Si el texto supera el espacio asignado, activa el scroller automáticamente */
+    overflow-x: hidden;  /* Prohíbe terminantemente el desplazamiento horizontal molesto */
+}
+
+.close-modal {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;        /* Asegura que el botón de cerrar flote siempre arriba del texto al scrolear */
+}
+
+/* ==========================================================================
    CONTROL DE VISIBILIDAD DINÁMICA DEL MODAL (Requerido por JS)
    ========================================================================== */
 .modal.hidden {
