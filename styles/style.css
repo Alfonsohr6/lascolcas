@@ -276,33 +276,70 @@ a {
     font-weight: 300;
 }
 
-/* Grid de Pozas y Kayak */
+/* ==========================================================================
+   NUEVA SECCIÓN DE EXPERIENCIAS ESTRELLA (Simetría e Impacto)
+   ========================================================================== */
+.experiencias-seccion {
+    width: 100%;
+    background-color: var(--bg-principal);
+    padding: 5rem 0;
+}
+
+/* Cabecera de la Sección */
+.experiencias-header {
+    max-width: 1200px;
+    margin: 0 auto 3.5rem auto;
+    padding: 0 4rem;
+    text-align: center;
+}
+
+.experiencias-main-title {
+    font-family: var(--fuente-global);
+    color: var(--color-primario);
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.experiencias-main-desc {
+    color: var(--color-secundario);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.85;
+}
+
+/* El Grid Fluido de 2 Columnas Infinitas */
 .grid-experiencias {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
+    gap: 4rem;
     max-width: 1200px;
-    margin: 5rem auto;
-    padding: 0 2rem;
+    margin: 0 auto;
+    padding: 0 4rem;
 }
 
 .experiencia-card {
     background-color: #FFFFFF;
-    border: 1px solid rgba(74, 51, 25, 0.06);
-    border-radius: 6px;
+    border: 1px solid rgba(74, 51, 25, 0.05);
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(74, 51, 25, 0.02);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(74, 51, 25, 0.02);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
 .experiencia-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(74, 51, 25, 0.06);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(74, 51, 25, 0.06);
 }
 
 .card-image-box {
     width: 100%;
-    height: 250px;
+    height: 280px; /* Un poco más alto para mayor impacto visual */
     overflow: hidden;
 }
 
@@ -310,48 +347,130 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.experiencia-card:hover .card-img {
+    transform: scale(1.04); /* Efecto zoom sutil elegante */
 }
 
 .card-content {
-    padding: 2rem;
+    padding: 1.5rem; /* Reducimos drásticamente el espacio interno superior e inferior */
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
-.card-badge {
-    display: inline-block;
-    background-color: rgba(82, 178, 207, 0.1);
-    color: var(--color-primario);
-    font-size: 0.75rem;
+/* Barra de acciones con precio y botones, ahora más compacta y elegante en 3 columnas */
+.card-action-bar {
+    display: flex;
+    border-top: 1px solid rgba(74, 51, 25, 0.08);
+    border-bottom: 1px solid rgba(74, 51, 25, 0.08);
+    padding: 0.8rem 0; /* Un poco más compacto */
+    margin-bottom: 1.5rem; /* Empuja el título masivo elegantemente hacia abajo */
+}
+
+/* Reducimos una pizca el tamaño de la fuente para que el texto largo de los precios entre en una sola línea */
+.action-label {
+    font-size: 0.65rem; /* Ajuste milimétrico de lectura premium */
     text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 0.25rem 0.7rem;
-    border-radius: 4px;
+    color: var(--color-secundario);
+    opacity: 0.7;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.2rem;
+}
+
+.action-value {
+    font-size: 1.15rem; /* Súper legible y compacto */
     font-weight: bold;
-    margin-bottom: 0.8rem;
+    color: var(--color-secundario);
+    letter-spacing: -0.5px; /* Junta levemente los números estilo catálogo moderno */
 }
 
-.card-title {
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-bottom: 0.8rem;
+.action-column {
+    flex: 1; /* Distribuye las 3 columnas al mismo ancho exacto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.card-description {
-    font-size: 0.95rem;
-    color: rgba(74, 51, 25, 0.85);
-    margin-bottom: 1.5rem;
+/* Líneas separadoras internas discretas */
+.action-column:not(:last-child) {
+    border-right: 1px solid rgba(74, 51, 25, 0.08);
 }
 
-.card-footer-info {
-    border-top: 1px solid rgba(74, 51, 25, 0.06);
-    padding-top: 1rem;
+/* Columna de Precio */
+.price-box {
+    align-items: flex-start; /* Alineado a la izquierda para el precio */
+    padding-left: 0.5rem;
 }
 
-.card-detail {
+.action-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--color-secundario);
+    opacity: 0.6;
+    letter-spacing: 1px;
+    margin-bottom: 0.15rem;
+}
+
+.action-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-secundario);
+}
+
+/* Botones de Acción */
+.card-btn-details,
+.card-btn-whatsapp {
+    width: 85%;
+    padding: 0.5rem 0;
     font-size: 0.8rem;
     text-transform: uppercase;
-    color: var(--color-acento);
-    font-weight: bold;
     letter-spacing: 1px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+/* Botón de Detalles (Abre Modal) */
+.card-btn-details {
+    background-color: transparent;
+    border: 1px solid var(--color-secundario);
+    color: var(--color-secundario);
+}
+
+.card-btn-details:hover {
+    background-color: var(--color-secundario);
+    color: #FFFFFF;
+}
+
+/* Botón de WhatsApp (Agendar) */
+.card-btn-whatsapp {
+    background-color: var(--color-acento);
+    border: 1px solid var(--color-acento);
+    color: #FFFFFF;
+}
+
+.card-btn-whatsapp:hover {
+    background-color: #3f5220; /* Oscurecimiento sutil del verde oliva */
+    border-color: #3f5220;
+}
+
+/* TÍTULO GRANDE EN LA PARTE INFERIOR */
+.card-title-massive {
+    font-family: var(--fuente-global);
+    color: var(--color-secundario);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-top: 0.5rem;
+    text-align: left;
 }
 
 /* Sección Artesanías */
@@ -579,9 +698,12 @@ a {
     .main-nav ul {
         gap: 1.5rem;
     }
-    .grid-experiencias {
-        gap: 2rem;
-        padding: 0 1.5rem;
+    .experiencias-header { 
+        padding: 0 2rem; 
+    }
+    .grid-experiencias { 
+        gap: 2.5rem; 
+        padding: 0 2rem; 
     }
     .footer-grid {
         grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablet */
@@ -682,10 +804,22 @@ a {
         border-radius: 4px;
     }
 
-    /* --- Adaptación del Resto del Contenido en Móvil --- */
-    .grid-experiencias {
-        grid-template-columns: 1fr;
-        margin: 3rem auto;
+    /* Ajustes para la sección de experiencias en teléfonos estándar (Galaxy A56)*/
+   .experiencias-seccion { 
+        padding: 4rem 0; 
+    }
+    .experiencias-main-title { 
+        font-size: 1.8rem; 
+    }
+    .grid-experiencias { 
+        grid-template-columns: 1fr; 
+        gap: 3.5rem; 
+    }
+    .card-image-box { 
+        height: 240px; 
+    }
+    .card-title-massive { 
+        font-size: 1.6rem; 
     }
 
     .artesanias-container {
@@ -767,12 +901,28 @@ a {
         right: 0.8rem;
         padding: 0.2rem 0.4rem;
     }
-
-    .card-content {
-        padding: 1.2rem;
+.experiencias-header { 
+        padding: 0 1rem; 
+        margin-bottom: 2rem; 
     }
-
-    .card-title {
-        font-size: 1.25rem;
+    .grid-experiencias { 
+        padding: 0 1rem; 
+    }
+    .card-btn-details, 
+    .card-btn-whatsapp { 
+        width: 90%; 
+        font-size: 0.75rem; 
+    }
+    .card-content { 
+        padding: 1.2rem 1rem; 
+    }
+    .action-label {
+        font-size: 0.58rem; /* Encapsulado ultra-fino para pantallas de 360px */
+    }
+    .action-value {
+        font-size: 1rem;
+    }
+    .card-title-massive { 
+        font-size: 1.4rem; 
     }
 }
