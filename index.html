@@ -9,8 +9,8 @@
 </head>
 <body>
 
+    <!-- Encabezado Principal con Selector de Idioma -->
     <header class="main-header">
-        
         <div class="header-identity">
             <a href="index.html" class="logo-link">
                 <img src="images/presentacion/logo.jpeg" alt="Logo Las Colcas" class="logo-circular">
@@ -34,100 +34,94 @@
                 <button id="btn-en">EN</button>
             </div>
         </div>
-
     </header>
 
     <main>
-        
+        <!-- Banner Principal -->
         <section id="hero" class="hero-section">
             <div class="video-container">
-            <img src="images/presentacion/banneryanque.jpg" alt="Banner Aguas Termales Las Colcas en Yanque" class="hero-banner-img">
-
+                <img src="images/presentacion/banneryanque.jpg" alt="Banner Aguas Termales Las Colcas en Yanque" class="hero-banner-img">
             </div>
-           <!-- <div class="video-container">
-                <video id="hero-video" controls poster="images/presentacion/banneryanque.jpg">
-                    <source src="https://www.facebook.com/share/r/1JJpqMohFA/" type="video/mp4">
-                    Tu navegador no soporta la reproducción de video.
-                </video>
-            </div> -->
+            
+            <!-- Sección Sobre Nosotros: Filosofía Organizacional -->
             <section class="filosofia-section">
                 <h2 class="filosofia-title" data-translate="titulo-filosofia">Sobre Nosotros</h2>
                     
                 <div class="filosofia-container">
+                    <!-- Caja de Misión -->
                     <div class="filosofia-box">
                         <h3 class="filosofia-subtitle" data-translate="sub-mision">Misión</h3>
-                        <p class="filosofia-text">
+                        <p class="filosofia-text" data-translate="text-mision">
                             En Las Colcas brindamos experiencias de descanso, aventura y conexión con la naturaleza en el corazón del valle del Colca, ofreciendo pozas termales naturales, kayak, camping y espacios recreativos en un entorno tranquilo y seguro. Nos comprometemos a ofrecer un servicio de calidad, haciendo que el visitante construya experiencia inolvidables a la lado de sus amigos , familia o simplemente para el o ella.
                         </p>
                     </div>
                 
+                    <!-- Caja de Visión -->
                     <div class="filosofia-box">
                         <h3 class="filosofia-subtitle" data-translate="sub-vision">Visión</h3>
-                        <p class="filosofia-text">
-                            Ser un destino turístico reconocido en el valle del Colca por ofrecer experiencias naturales auténticas, sostenibles con la naturaleza y memorables, destacando por la calidad de nuestros servicios, el cuidado del entorno natural y la promoción de la cultura local, convirtiéndonos en un lugar donde las personas encuentren descanso, aventura y conexión con la esencia del Colca.
+                        <p class="filosofia-text" data-translate="text-vision">
+                            Ser un destino turístico reconocido en el valle del Colca por ofrecer experiences naturales auténticas, sostenibles con la naturaleza y memorables, destacando por la calidad de nuestros servicios, el cuidado del entorno natural y la promoción de la cultura local, convirtiéndonos en un lugar donde las personas encuentren descanso, aventura y conexión con la esencia del Colca.
                         </p>
                     </div>
                 </div>
             </section>
         </section>
 
-<section id="experiencias" class="experiencias-seccion">
-        <div class="experiencias-header">
-            <h2 class="experiencias-main-title" data-translate="titulo-experiencias">Nuestras Experiencias Estrella</h2>
-            <p class="experiencias-main-desc" data-translate="desc-experiencias">Descubre las actividades más queridas de Las Colcas. Aguas termo-medicinales y aventura viva a orillas del majestuoso río en Yanque.</p>
-        </div>
+        <!-- Sección de Experiencias Destacadas -->
+        <section id="experiencias" class="experiencias-seccion">
+            <div class="experiencias-header">
+                <h2 class="experiencias-main-title" data-translate="titulo-experiencias">Nuestras Experiencias Estrella</h2>
+                <p class="experiencias-main-desc" data-translate="desc-experiencias">Descubre las actividades más queridas de Las Colcas. Aguas termo-medicinales y aventura viva a orillas del majestuoso río en Yanque.</p>
+            </div>
 
-        <div class="grid-experiencias">
-            
-            <article id="pozas" class="experiencia-card" data-servicio="termas">
-                <div class="card-image-box">
-                    <img src="images/actividades/pozasestrella.jpg" alt="Pozas Termales Las Colcas en Yanque" class="card-img">
-                </div>
-                <div class="card-content">
-                    
-                    <div class="card-action-bar">
-                        <div class="action-column price-box">
-                            <span class="action-label" data-translate="label-precio-pozas">Adulto / Niño (1h)</span>
-                            <span class="action-value">S/20 / S/10</span>
-                        </div>
-                        <div class="action-column btn-box">
-                            <button class="card-btn-details" data-modal="pozas" data-translate="btn-detalles">Detalles</button>
-                        </div>
-                        <div class="action-column btn-box">
-                            <a href="https://wa.me/51900962294?text=Quiero%20agendar%20una%20visita%20con%20ustedes" target="_blank" rel="noopener noreferrer" class="card-btn-whatsapp" data-translate="btn-agendar">Agendar</a>
-                        </div>
+            <div class="grid-experiencias">
+                <!-- Tarjeta: Pozas Termales -->
+                <article id="pozas" class="experiencia-card" data-servicio="termas">
+                    <div class="card-image-box">
+                        <img src="images/actividades/pozasestrella.jpg" alt="Pozas Termales Las Colcas en Yanque" class="card-img">
                     </div>
-
-                    <h3 class="card-title-massive" data-translate="titulo-pozas">Pozas Termales</h3>
-                </div>
-            </article>
-            
-            <article id="kayak" class="experiencia-card" data-servicio="aventura">
-                <div class="card-image-box">
-                    <img src="images/actividades/kayakestrella.jpg" alt="Navegación en Kayak en Yanque" class="card-img">
-                </div>
-                <div class="card-content">
-                    
-                    <div class="card-action-bar">
-                        <div class="action-column price-box">
-                            <span class="action-label" data-translate="label-precio-kayak">Adulto / Niño (1h)</span>
-                            <span class="action-value">S/20 / S/10</span>
+                    <div class="card-content">
+                        <div class="card-action-bar">
+                            <div class="action-column price-box">
+                                <span class="action-label" data-translate="label-precio-pozas">Adulto / Niño (1h)</span>
+                                <span class="action-value">S/20 / S/10</span>
+                            </div>
+                            <div class="action-column btn-box">
+                                <button class="card-btn-details" data-modal="pozas" data-translate="btn-detalles">Detalles</button>
+                            </div>
+                            <div class="action-column btn-box">
+                                <a href="https://wa.me/51900962294?text=Quiero%20agendar%20una%20visita%20con%20ustedes" target="_blank" rel="noopener noreferrer" class="card-btn-whatsapp" data-translate="btn-agendar">Agendar</a>
+                            </div>
                         </div>
-                        <div class="action-column btn-box">
-                            <button class="card-btn-details" data-modal="kayak" data-translate="btn-detalles">Detalles</button>
-                        </div>
-                        <div class="action-column btn-box">
-                            <a href="https://wa.me/51900962294?text=Quiero%20agendar%20una%20visita%20con%20ustedes" target="_blank" rel="noopener noreferrer" class="card-btn-whatsapp" data-translate="btn-agendar">Agendar</a>
-                        </div>
+                        <h3 class="card-title-massive" data-translate="titulo-pozas">Pozas Termales</h3>
                     </div>
+                </article>
+                
+                <!-- Tarjeta: Kayak -->
+                <article id="kayak" class="experiencia-card" data-servicio="aventura">
+                    <div class="card-image-box">
+                        <img src="images/actividades/kayakestrella.jpg" alt="Navegación en Kayak en Yanque" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-action-bar">
+                            <div class="action-column price-box">
+                                <span class="action-label" data-translate="label-precio-kayak">Adulto / Niño (40m-1h)</span>
+                                <span class="action-value">S/20 / S/10</span>
+                            </div>
+                            <div class="action-column btn-box">
+                                <button class="card-btn-details" data-modal="kayak" data-translate="btn-detalles">Detalles</button>
+                            </div>
+                            <div class="action-column btn-box">
+                                <a href="https://wa.me/51900962294?text=Quiero%20agendar%20una%20visita%20con%20ustedes" target="_blank" rel="noopener noreferrer" class="card-btn-whatsapp" data-translate="btn-agendar">Agendar</a>
+                            </div>
+                        </div>
+                        <h3 class="card-title-massive" data-translate="titulo-kayak">Kayak</h3>
+                    </div>
+                </article>
+            </div>
+        </section>
 
-                    <h3 class="card-title-massive" data-translate="titulo-kayak">Kayak</h3>
-                </div>
-            </article>
-
-        </div>
-    </section>
-
+        <!-- Sección Artesanías -->
         <section id="artesanias" class="seccion-artesanias">
             <h2 class="section-title" data-translate="titulo-artesanias">Artesanías de Yanque</h2>
             <div class="artesanias-container">
@@ -141,12 +135,11 @@
                 </div>
             </div>
         </section>
-
     </main>
 
+    <!-- Pie de Página -->
     <footer id="contacto" class="main-footer">
         <div class="footer-grid">
-            
             <div class="footer-column">
                 <h4 data-translate="footer-horario-tit">Horario de Reservas</h4>
                 <p data-translate="footer-horario-desc">Lunes a Domingo<br>7:00 AM – 9:00 PM</p>
@@ -174,7 +167,6 @@
                     <span data-translate="ver-mapa">📍 Ubicación en las Orillas del Río</span>
                 </div>
             </div>
-
         </div>
 
         <div class="footer-bottom">
@@ -193,12 +185,16 @@
         </div>
     </footer>
 
+    <!-- Estructura del Modal Dinámico Corregida para JS -->
     <div id="modal-dinamico" class="modal hidden">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div id="modal-body-content"></div>
+            <span id="modal-cerrar" class="close-modal">&times;</span>
+            <h2 id="modal-titulo" class="filosofia-subtitle" style="margin-bottom: 1.5rem;"></h2>
+            <div id="modal-cuerpo" class="filosofia-text" style="text-align: justify;"></div>
         </div>
     </div>
 
+    <!-- Carga del archivo JavaScript al final de la página -->
+    <script src="scripts/script.js"></script>
 </body>
 </html>

@@ -473,6 +473,19 @@ a {
     text-align: left;
 }
 
+/* ==========================================================================
+   CONTROL DE VISIBILIDAD DINÁMICA DEL MODAL (Requerido por JS)
+   ========================================================================== */
+.modal.hidden {
+    display: none !important;
+}
+
+.modal-visible {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
 /* Sección Artesanías */
 .seccion-artesanias {
     max-width: 1200px;
