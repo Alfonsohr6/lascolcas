@@ -648,8 +648,8 @@ MOTOR 3 - GALERÍA DINÁMICA DESDE GOOGLE SHEETS
 })();
 
 /**
- * MOTOR 5: Sistema Autónomo Universal de Videos Verticales (Estilo Reels/TikTok)
- * Las Colcas - Yanque (Edición Híbrida Multiplataforma: Drive, Instagram y Enlaces Directos)
+ * MOTOR 5: Sistema Autónomo de Videos Verticales (Estilo Reels)
+ * Las Colcas - Yanque (Edición Optimizada Iframe Drive - Centrado Asegurado)
  */
 (function() {
     'use strict';
@@ -687,91 +687,45 @@ MOTOR 3 - GALERÍA DINÁMICA DESDE GOOGLE SHEETS
     }
 
     /**
-     * DETECTOR Y CONVERTIDOR MAESTRO DE ENLACES MULTIPLATAFORMA
-     * Analiza el link del Sheets y genera el elemento HTML correspondiente.
+     * GENERADOR DE REPRODUCTOR DRIVE COMPATIBLE (IFRAME PREVIEW)
+     * Soluciona el problema de carga usando Preview, y corrige el descentrado con CSS en el Wrapper
      */
     function generarEstructuraVideo(url, idVideo, descripcionText) {
         if (!url) return '';
         let urlLimpia = url.replace(/["']/g, '').trim();
-        
-        // -----------------------------------------------------------------
-        // CASO 1: GOOGLE DRIVE (Soporta archivos gigantes sin límite de peso)
-        // -----------------------------------------------------------------
+        let idDrive = '';
+
+        // Extracción estricta del ID de Google Drive
         if (urlLimpia.includes('drive.google.com')) {
-            let idDrive = '';
             if (urlLimpia.includes('/file/d/')) {
                 idDrive = urlLimpia.split('/file/d/')[1].split('/')[0];
             } else if (urlLimpia.includes('id=')) {
                 idDrive = urlLimpia.split('id=')[1].split('&')[0];
             }
-            
-            if (idDrive) {
-                let urlPreview = `https://drive.google.com/file/d/${idDrive}/preview`;
-                return `
-                    <div class="video-wrapper" style="width:100%; height:100%; position:relative; background-color:#000;">
-                        <iframe src="${urlPreview}" class="tiktok-player" allow="autoplay; encrypted-media" allowfullscreen style="width:100%; height:100%; border:none; object-fit:cover; border-radius:12px;"></iframe>
-                        <div class="video-overlay" style="position:absolute; bottom:15px; left:12px; right:12px; color:#fff; text-shadow:2px 2px 5px rgba(0,0,0,0.9); pointer-events:none; font-size:0.85rem; font-weight:bold; z-index:10; background:rgba(0,0,0,0.4); padding:6px 10px; border-radius:6px;">
-                            <p class="video-desc-text" style="margin:0; line-height:1.3;">${descripcionText}</p>
-                        </div>
-                    </div>`;
-            }
         }
 
-        // -----------------------------------------------------------------
-        // CASO 2: INSTAGRAM REELS
-        // -----------------------------------------------------------------
-        if (urlLimpia.includes('instagram.com')) {
-            // Limpiamos los parámetros de tracking extras para obtener la URL base limpia
-            let urlBaseInsta = urlLimpia.split('?')[0];
-            if (!urlBaseInsta.endsWith('/')) urlBaseInsta += '/';
-            let urlEmbed = `${urlBaseInsta}embed/captioned=0`;
-            
-            return `
-                <div class="video-wrapper" style="width:100%; height:100%; position:relative; background-color:#000;">
-                    <iframe src="${urlEmbed}" class="tiktok-player" allowtransparency="true" frameborder="0" scrolling="no" style="width:100%; height:100%; border:none; object-fit:cover; border-radius:12px;"></iframe>
-                    <div class="video-overlay" style="position:absolute; bottom:15px; left:12px; right:12px; color:#fff; text-shadow:2px 2px 5px rgba(0,0,0,0.9); pointer-events:none; font-size:0.85rem; font-weight:bold; z-index:10; background:rgba(0,0,0,0.4); padding:6px 10px; border-radius:6px;">
-                        <p class="video-desc-text" style="margin:0; line-height:1.3;">${descripcionText}</p>
-                    </div>
-                </div>`;
-        }
+        // Si no se encuentra un ID válido de Drive, no renderizamos para evitar cuadros en blanco
+        if (!idDrive) return '';
 
-        // -----------------------------------------------------------------
-        // CASO 3: TIKTOK (Incrustación oficial compacta)
-        // -----------------------------------------------------------------
-        if (urlLimpia.includes('tiktok.com')) {
-            // Usamos el reproductor embebido estándar de TikTok para compatibilidad móvil
-            let urlEmbedTikTok = urlLinterTikTok(urlLimpia);
-            return `
-                <div class="video-wrapper" style="width:100%; height:100%; position:relative; background-color:#000;">
-                    <iframe src="${urlEmbedTikTok}" class="tiktok-player" allowfullscreen scrolling="no" style="width:100%; height:100%; border:none; object-fit:cover; border-radius:12px;"></iframe>
-                    <div class="video-overlay" style="position:absolute; bottom:15px; left:12px; right:12px; color:#fff; text-shadow:2px 2px 5px rgba(0,0,0,0.9); pointer-events:none; font-size:0.85rem; font-weight:bold; z-index:10; background:rgba(0,0,0,0.4); padding:6px 10px; border-radius:6px;">
-                        <p class="video-desc-text" style="margin:0; line-height:1.3;">${descripcionText}</p>
-                    </div>
-                </div>`;
-        }
+        // Construcción de la URL de previsualización oficial de Google
+        let urlPreview = `https://drive.google.com/file/d/${idDrive}/preview`;
 
-        // -----------------------------------------------------------------
-        // CASO 4: ENLACES DIRECTOS A ARCHIVOS MP4 U OTROS SERVIDORES
-        // -----------------------------------------------------------------
+        // RETORNO DE INTERFAZ: Forzamos un contenedor flex centralizado y overflow oculto
+        // El iframe se configura con transformaciones para amortiguar cualquier barra negra lateral de Google
+        // RETORNO DE INTERFAZ: Forzamos sobredimensión lateral para expulsar las barras negras de Google
         return `
-            <div class="video-wrapper" style="width:100%; height:100%; position:relative;">
-                <video src="${urlLimpia}" class="tiktok-player" controls playsinline preload="metadata" style="width:100%; height:100%; object-fit:cover; border-radius:12px; background-color:#000;"></video>
-                <div class="video-overlay" style="position:absolute; bottom:45px; left:12px; right:12px; color:#fff; text-shadow:2px 2px 5px rgba(0,0,0,0.9); pointer-events:none; font-size:0.85rem; font-weight:bold; z-index:10; background:rgba(0,0,0,0.4); padding:6px 10px; border-radius:6px;">
-                    <p class="video-desc-text" style="margin:0; line-height:1.3;">${descripcionText}</p>
+            <div class="video-wrapper" style="width:100%; height:100%; position:relative; background-color:#000; border-radius:12px; overflow:hidden;">
+                <iframe 
+                    src="${urlPreview}" 
+                    class="tiktok-player" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen 
+                    style="width:140%; height:100%; border:none; display:block; position:absolute; top:0; left:-20%; border-radius:12px;">
+                </iframe>
+                <div class="video-overlay" style="position:absolute; bottom:15px; left:12px; right:12px; color:#fff; text-shadow:2px 2px 5px rgba(0,0,0,0.9); pointer-events:none; font-size:0.85rem; font-weight:bold; z-index:10; background:rgba(0,0,0,0.4); padding:6px 10px; border-radius:6px; box-sizing:border-box;">
+                    <p class="video-desc-text" style="margin:0; line-height:1.3; white-space:normal; word-wrap:break-word;">${descripcionText}</p>
                 </div>
             </div>`;
-    }
-
-    /**
-     * Formatea links de TikTok para extraer su ID y convertirlos en reproductores seguros
-     */
-    function urlLinterTikTok(url) {
-        if (url.includes('/video/')) {
-            let idVideo = url.split('/video/')[1].split('?')[0];
-            return `https://www.tiktok.com/embed/v2/${idVideo}`;
-        }
-        // Fallback si ponen un enlace corto de compartir de TikTok móvil (redirige al embed nativo)
-        return url;
     }
 
     function configurarControlesCarrusel() {
@@ -829,7 +783,6 @@ MOTOR 3 - GALERÍA DINÁMICA DESDE GOOGLE SHEETS
                 const linkOriginal = fila[idxLink].trim();
                 const descripcionText = fila[idxDesc] ? fila[idxDesc].replace(/["']/g, '').trim() : 'Momentos Las Colcas';
 
-                // Generamos la tarjeta basándonos en la plataforma del enlace
                 const contenidoEstructura = generarEstructuraVideo(linkOriginal, idVideo, descripcionText);
 
                 if (contenidoEstructura) {
