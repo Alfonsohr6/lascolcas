@@ -408,8 +408,8 @@ mirador: {
 });
 
 /* ==========================================================================
-       SECCIÓN 6: MOTOR 3 - GALERÍA DINÁMICA DESDE GOOGLE SHEETS
-       ========================================================================== */
+MOTOR 3 - GALERÍA DINÁMICA DESDE GOOGLE SHEETS
+========================================================================== */
 
     // 1. CONFIGURACIÓN DEL REPOSITORIO DE DATOS REAL DE LAS COLCAS
     const SHEET_ID = 'e/2PACX-1vSccxABPgnZ2bXmu1biB3js9O_6zmoJkpHKuSCKOUbifO1f347AzyOlJRpTeUaqehALwMo4xmYOx72S'; 
@@ -501,3 +501,148 @@ mirador: {
 
     // 4. ARRANQUE AUTOMÁTICO
     cargarGaleriaDesdeSheets();
+
+/**
+ * MOTOR 4: Sistema Autónomo e Independiente de Carga de Imágenes
+ * Las Colcas - Yanque (Conexión Directa y Forzada a Formato CSV)
+ */
+(function() {
+    'use strict';
+
+    // 1. CONFIGURACIÓN DEL REPOSITORIO DE DATOS EN VIVO (Formato CSV Asegurado)
+    // Usamos el ID del documento base y forzamos la salida limpia de la pestaña con su GID numérico
+    const DOCUMENT_ID = 'e/2PACX-1vSccxABPgnZ2bXmu1biB3js9O_6zmoJkpHKuSCKOUbifO1f347AzyOlJRpTeUaqehALwMo4xmYOx72S';
+    const GID_TARJETAS = '2121933173'; // El identificador exacto de tu pestaña de tarjetas
+    const SHEET_URL = `https://docs.google.com/spreadsheets/d/${DOCUMENT_ID}/pub?output=csv&gid=${GID_TARJETAS}`;
+
+    // Mapa de ID: Conecta el 'id' de tu Sheet con el 'id' de la etiqueta <img> en tu HTML
+    const MAPA_IMAGENES = {
+        'pozo': 'img-pozo',
+        'kayak': 'img-kayak',
+        'camping': 'img-camping',
+        'pesca': 'img-pesca',
+        'parrilla': 'img-parrilla',
+        'mirador': 'img-mirador',
+        'anfitearo': 'img-anfitearo', // ID exacto de tu HTML/Sheet original
+        'tumbas': 'img-tumbas',
+        'uyouyo': 'img-uyouyo'
+    };
+
+    function removerSkeleton(img) {
+        const padre = img.closest('.loading-skeleton');
+        if (padre) padre.classList.remove('loading-skeleton');
+    }
+
+    // Procesador CSV local e independiente
+    function parsearCSVLocal(texto) {
+        const lineas = texto.split(/\r?\n/);
+        return lineas.map(linea => {
+            const resultado = [];
+            let dentroDeComillas = false;
+            let entradaActual = "";
+            for (let i = 0; i < linea.length; i++) {
+                const char = linea[i];
+                if (char === '"') {
+                    dentroDeComillas = !dentroDeComillas;
+                } else if (char === ',' && !dentroDeComillas) {
+                    resultado.push(entradaActual);
+                    entradaActual = "";
+                } else {
+                    entradaActual += char;
+                }
+            }
+            resultado.push(entradaActual);
+            return resultado;
+        });
+    }
+
+    async function ejecutarMotor4() {
+        try {
+            // Consumimos el CSV puro directo de la nube de Google
+            const respuesta = await fetch(SHEET_URL);
+            if (!respuesta.ok) throw new Error("Google Sheets rechazó la conexión o el enlace CSV no es válido.");
+            
+            const textoCSV = await respuesta.text();
+            const filas = parsearCSVLocal(textoCSV);
+            if (filas.length < 2) return;
+
+            // Limpieza extrema de cabeceras para evitar espacios trampa o comillas
+            const cabecera = filas[0].map(c => c.replace(/["']/g, '').trim().toLowerCase());
+            
+            const indexId = cabecera.indexOf('id');
+            const indexLink = cabecera.indexOf('link');
+            const indexAlt = cabecera.indexOf('alt_texto');
+
+            // Fallbacks posicionales por seguridad si las cabeceras vienen alteradas
+            const idxId = indexId !== -1 ? indexId : 0;
+            const idxLink = indexLink !== -1 ? indexLink : 1;
+            const idxAlt = indexAlt;
+
+            const idsProcesados = new Set();
+
+            for (let i = 1; i < filas.length; i++) {
+                const fila = filas[i];
+                if (!fila[idxId]) continue;
+
+                // Limpiamos los datos de impurezas del formato CSV
+                const idSheet = fila[idxId].replace(/["']/g, '').trim().toLowerCase();
+                let urlImg = fila[idxLink] ? fila[idxLink].replace(/["']/g, '').trim() : '';
+                const txtAlt = (idxAlt !== -1 && fila[idxAlt]) ? fila[idxAlt].replace(/["']/g, '').trim() : '';
+
+                const idHtml = MAPA_IMAGENES[idSheet];
+                
+                if (idHtml) {
+                    idsProcesados.add(idSheet);
+                    const imgElemento = document.getElementById(idHtml);
+                    
+                    if (imgElemento) {
+                        // Si la celda está vacía en Google Sheets, desactivamos el skeleton para ver el HTML base
+                        if (!urlImg || urlImg === '') {
+                            removerSkeleton(imgElemento);
+                            continue;
+                        }
+
+                        // Descarga asíncrona controlada en segundo plano
+                        const imgTemp = new Image();
+                        imgTemp.src = urlImg;
+                        
+                        imgTemp.onload = () => {
+                            imgElemento.src = urlImg;
+                            if (txtAlt) imgElemento.alt = txtAlt;
+                            removerSkeleton(imgElemento);
+                        };
+                        
+                        imgTemp.onerror = () => {
+                            console.warn(`M4: La URL de la imagen para '${idHtml}' no pudo ser cargada.`);
+                            removerSkeleton(imgElemento);
+                        };
+                    }
+                }
+            }
+
+            // Desactivar skeletons de IDs ausentes en la respuesta del Sheet
+            Object.keys(MAPA_IMAGENES).forEach(idSheet => {
+                if (!idsProcesados.has(idSheet)) {
+                    const idHtml = MAPA_IMAGENES[idSheet];
+                    const img = document.getElementById(idHtml);
+                    if (img) removerSkeleton(img);
+                }
+            });
+
+        } catch (error) {
+            console.error("Error crítico en Motor 4 dinámico:", error);
+            // Si la red falla por completo, liberamos la interfaz quitando todos los skeletons
+            Object.values(MAPA_IMAGENES).forEach(id => {
+                const img = document.getElementById(id);
+                if (img) removerSkeleton(img);
+            });
+        }
+    }
+
+    // Inicializador del disparo independiente
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', ejecutarMotor4);
+    } else {
+        ejecutarMotor4();
+    }
+})();
