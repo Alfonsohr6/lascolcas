@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "sub-vision": "Visión",
             "text-vision": "Ser un destino turístico reconocido en el valle del Colca por ofrecer experiences naturales auténticas, sostenibles con la naturaleza y memorables, destacando por la calidad de nuestros servicios, el cuidado del entorno natural y la promoción de la cultura local, convirtiéndonos en un lugar donde las personas encuentren descanso, aventura y conexión con la esencia del Colca.",
             
-            // Tarjetas de Experiencias
+            // Tarjetas de Experiencias Principales
             "titulo-experiencias": "Nuestras Experiencias Estrella",
             "desc-experiencias": "Descubre las actividades más queridas de Las Colcas. Aguas termo-medicinales y aventura viva a orillas del majestuoso río en Yanque.",
             "titulo-pozas": "Pozas Termales",
@@ -30,16 +30,43 @@ document.addEventListener("DOMContentLoaded", () => {
             "label-precio-kayak": "Adulto / Niño (1h)",
             "btn-detalles": "Detalles",
             "btn-agendar": "Agendar",
+            "btn-ubicacion": "📍 Ubicación",
+            
+            // Más Actividades (Sección Secundaria)
+            "titulo-actividades-sec": "Más Actividades en el Establecimiento",
+            "titulo-camping": "Camping",
+            "titulo-pesca": "Pesca",
+            "titulo-parrilla": "Parrilla",
+            
+            // Puntos Turísticos de Yanque
+            "titulo-puntos-tur": "Puntos Turísticos en Yanque",
+            "titulo-mirador": "Mirador del Río Colca",
+            "titulo-occolle": "Anfiteatro de Occolle",
+            "titulo-tumbas": "Tumbas Colgantes",
+            "titulo-uyouyo": "Uyo Uyo",
+            
+            // Acordeón de Políticas y Preguntas Frecuentes
+            "pol-tit-seccion": "Condiciones y Políticas de Reserva",
+            "faq-pagos-tit": "💰 Métodos de Pago Disponibles",
+            "faq-pagos-desc": "Los pagos se realizan por adelantado y pueden hacerse en efectivo o mediante Yape / Plin.",
+            "faq-reserva-tit": "📅 ¿Cómo funcionan las Reservaciones?",
+            "faq-reserva-desc": "Las reservas deben realizarse con un mínimo de 8 horas de anticipación, abonando el 50 % del servicio.",
+            "faq-cancel-tit": "🛡️ Política de Cancelación y Reembolso",
+            "faq-cancel-intro": "El reembolso aplica bajo criterios médicos o fallas del servicio.",
             
             // Sección Artesanías
-           "titulo-artesanias": "Artesanías de Yanque",
+            "titulo-artesanias": "Artesanías de Yanque",
             "desc-artesanias": "En Las Colcas también valoramos y compartimos la esencia cultural del valle del Cañón del Colca a través de artesanías elaboradas con dedicación e inspiración en las tradiciones andinas de Yanque. Cada pieza refleja el arte, los colores y la identidad de nuestra tierra, combinando trabajo manual, detalles bordados y diseños únicos que transmiten calidez y autenticidad. Entre nuestras creaciones encontrarás bolsos, marcapáginas, individuales bordados y otros productos artesanales hechos con mucho detalle y dedicación por nuestras manos.",
             "titulo-galeria-taller": "Nuestro Taller y Creaciones",
+            "titulo-tiktok-seccion": "Nuestros Momentos en Video",
             
             // Sección Pie de Página (Footer)
             "footer-horario-tit": "Horario de Reservas",
             "footer-horario-desc": "Lunes a Domingo<br>7:00 AM – 9:00 PM",
             "footer-contacto-tit": "Contacto Directo",
+            "footer-servicios-tit": "Servicios Adicionales",
+            "footer-pet-friendly": "Establecimiento Pet Friendly",
+            "footer-pagos-locales": "Aceptamos Yape, Plin y Transferencias",
             "footer-ubicacion-tit": "Nuestra Ubicación",
             "footer-ubicacion-desc": "Baños Termales Chininia, Yanque, Valle del Colca, Arequipa, Perú.",
             "ver-mapa": "📍 Ubicación en las Orillas del Río"
@@ -58,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "sub-vision": "Vision",
             "text-vision": "To be a recognized tourist destination in the Colca Valley for offering authentic, sustainable, and memorable natural experiences, standing out for the quality of our services, the care of the natural environment, and the promotion of local culture, becoming a place where people find rest, adventure, and connection with the essence of Colca.",
             
-            // Experience Cards (Prices are preserved strictly in Soles 'S/')
+            // Experience Cards
             "titulo-experiencias": "Our Signature Experiences",
             "desc-experiencias": "Discover the most beloved activities at Las Colcas. Thermo-medicinal waters and live adventure on the banks of the majestic river in Yanque.",
             "titulo-pozas": "Thermal Pools",
@@ -67,16 +94,43 @@ document.addEventListener("DOMContentLoaded", () => {
             "label-precio-kayak": "Adult / Child (1h)",
             "btn-detalles": "Details",
             "btn-agendar": "Book Now",
+            "btn-ubicacion": "📍 Location",
+            
+            // More Activities (Secondary Section)
+            "titulo-actividades-sec": "More On-Site Activities",
+            "titulo-camping": "Camping",
+            "titulo-pesca": "Fishing",
+            "titulo-parrilla": "Barbecue",
+            
+            // Tourist Spots in Yanque
+            "titulo-puntos-tur": "Tourist Spots in Yanque",
+            "titulo-mirador": "Colca River Viewpoint",
+            "titulo-occolle": "Occolle Amphitheater",
+            "titulo-tumbas": "Hanging Tombs",
+            "titulo-uyouyo": "Uyo Uyo",
+            
+            // Booking Policies & FAQ Accordion
+            "pol-tit-seccion": "Booking Terms & Policies",
+            "faq-pagos-tit": "💰 Available Payment Methods",
+            "faq-pagos-desc": "Payments are made in advance and can be settled in cash or via Yape / Plin.",
+            "faq-reserva-tit": "📅 How Do Bookings Work?",
+            "faq-reserva-desc": "Reservations must be made at least 8 hours in advance, with a 50% deposit of the service cost.",
+            "faq-cancel-tit": "🛡️ Cancellation & Refund Policy",
+            "faq-cancel-intro": "Refunds apply exclusively under medical criteria or service disruptions.",
             
             // Handicrafts Section
             "titulo-artesanias": "Yanque Handicrafts",
             "desc-artesanias": "At Las Colcas, we also value and share the cultural essence of the Colca Canyon Valley through handicrafts made with dedication and inspired by the Andean traditions of Yanque. Each piece reflects the art, colors, and identity of our land, combining manual work, embroidered details, and unique designs that convey warmth and authenticity. Among our creations, you will find bags, bookmarks, embroidered placemats, and other artisanal products crafted with great detail and dedication by our own hands.",
             "titulo-galeria-taller": "Our Workshop and Creations",
+            "titulo-tiktok-seccion": "Our Moments on Video",
 
             // Footer Section
             "footer-horario-tit": "Booking Schedule",
             "footer-horario-desc": "Monday to Sunday<br>7:00 AM – 9:00 PM",
             "footer-contacto-tit": "Direct Contact",
+            "footer-servicios-tit": "Additional Services",
+            "footer-pet-friendly": "Pet Friendly Establishment",
+            "footer-pagos-locales": "We accept Yape, Plin and Bank Transfers",
             "footer-ubicacion-tit": "Our Location",
             "footer-ubicacion-desc": "Chininia Hot Springs, Yanque, Colca Valley, Arequipa, Peru.",
             "ver-mapa": "📍 Location on the River Banks"
@@ -97,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // Si la clave existe dentro de nuestra base de datos lingüística procedemos
             if (traducciones[lang] && traducciones[lang][clave]) {
-                // Manejo de saltos de línea con innerHTML para mantener el formato del horario
+                // Manejo de saltos de línea estructurados para el horario u otros elementos con HTML interno
                 if (clave === "footer-horario-desc") {
                     elemento.innerHTML = traducciones[lang][clave];
                 } else {
@@ -117,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Compartimos el estado del idioma globalmente en el navegador para que el modal sepa qué leer
+        // Compartimos el estado del idioma globalmente en el navegador para que otros motores sepan qué leer
         window.currentLanguage = lang;
     }
 
@@ -129,6 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (btnEn) btnEn.addEventListener("click", () => cambiarIdioma("en"));
 
 });
+// NOTA: Deja esta llave abierta, aquí continuarán el resto de las funciones en los próximos pasos.
 
 
 /* ==========================================================================
@@ -137,8 +192,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Contenido extendido para los modales informativos detallados (Bilingüe)
+    //Contenido extendido para los modales informativos detallados (Bilingüe) 
     const infoModales = {
+        //Seccion 1: Experiencias estrellas, 
         es: {
             pozas: {
                 titulo: "Pozas Termales",
@@ -155,7 +211,65 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p>Las Colcas está rodeado de imponentes montañas que forman un pequeño cañón esculpido por el río Colca, creando un espacio sereno, seguro y libre de corrientes fuertes, ideal tanto para quienes desean remar por primera vez como para quienes buscan disfrutar del paisaje de una manera diferente.</p>
                     <p>La experiencia incluye chalecos salvavidas, remos y una breve guía con técnicas básicas de remo antes de ingresar al agua, brindando seguridad y confianza durante toda la actividad.</p>
                 `
+            },
+
+//Seccion 2: Actividades secundarias.
+
+            camping: {
+                titulo: "Zonas de Camping",
+                descripcion: `
+                    <p>Las Colcas ofrece el espacio perfecto para vivir una noche diferente y aventurera, compartiendo momentos especiales con amigos o familia.</p>
+                    <p>Puedes acampar sobre la arena, a orillas del río Colca, disfrutando de una fogata en medio de la naturaleza e imaginando historias bajo el cielo estrellado. También puedes instalar tu carpa en el área de pasto frente a las aguas termales, en un ambiente tranquilo y acogedor.</p>
+                    <p>Vive una experiencia única de descanso y conexión con la naturaleza. Rodeado de montañas, aire puro y el sonido relajante del agua, Las Colcas es el lugar ideal para compartir noches inolvidables en un ambiente seguro y lleno de tranquilidad.</p>
+                `
+            },
+            pesca: {
+                titulo: "Pesca de Trucha",
+                descripcion: `
+                    <p>El río Colca mantiene viva la presencia de truchas y en Las Colcas se forman espacios ideales para disfrutar de la pesca.</p>
+                    <p>Si deseas atrapar una trucha y luego cocinarla, aquí podrás vivir esa experiencia rodeado de naturaleza y tranquilidad.</p>
+                `
+            },
+            parrilla: {
+                titulo: "Zonas de Parrilla",
+                descripcion: `
+                    <p>Comparte momentos especiales al aire libre en nuestras zonas de parrilla, diseñadas para disfrutar reuniones familiares, encuentros con amigos y almuerzos rodeados de naturaleza.</p>
+                    <p>El paisaje del río, las montañas y el ambiente cálido de Las Colcas convierten cada comida en una experiencia acogedora y memorable.</p>
+                `
+            },
+
+ //Seccion 3: Puntos turísticos de Yanque. 
+
+ mirador: {
+                titulo: "Mirador del Río Colca",
+                descripcion: `
+                    <p>Contempla una de las vistas más impresionantes del valle desde el mirador natural del río Colca, donde el paisaje andino revela la formación del cañón, las terrazas y las formaciones naturales esculpidas por el paso del tiempo.</p>
+                    <p>Es el lugar perfecto para disfrutar de la tranquilidad del entorno, tomar fotografías panorámicas y conectar con la majestuosidad del Colca.</p>
+                `
+            },
+            anfitearo: { // Nota: Mantiene la clave "anfitearo" para coincidir exactamente con tu HTML
+                titulo: "Anfiteatro de Occolle",
+                descripcion: `
+                    <p>El Anfiteatro de Occolle es una impresionante formación natural y agrícola compuesta por andenes construidos en las laderas de las montañas, considerados parte de la herencia ancestral del valle del Colca.</p>
+                    <p>Su diseño armonioso con el paisaje muestra el ingenio de las antiguas culturas andinas y ofrece una vista única donde naturaleza e historia se unen en un escenario espectacular.</p>
+                `
+            },
+            tumbas: {
+                titulo: "Tumbas Colgantes",
+                descripcion: `
+                    <p>Existen dos teorías sobre este lugar. Algunas personas mencionan que eran colcas, espacios utilizados para conservar productos alimenticios como habas, maíz y otros cultivos de la zona.</p>
+                    <p>Otras personas creen que se trata de tumbas relacionadas con las costumbres y creencias de las culturas preincaicas que habitaron el valle.</p>
+                    <p>Hasta la actualidad no se conoce con certeza cuál fue su verdadero propósito, pero estas estructuras pueden observarse claramente desde el puente sifón.</p>
+                `
+            },
+            uyouyo: {
+                titulo: "Complejo Arqueológico Uyo Uyo",
+                descripcion: `
+                    <p>Uyo Uyo es un antiguo complejo arqueológico ubicado cerca de Yanque y considerado uno de los asentamientos más representativos del valle del Colca.</p>
+                    <p>Sus caminos de piedra, terrazas y construcciones ancestrales permiten descubrir parte de la historia y organización de las antiguas civilizaciones andinas, en medio de un entorno natural de gran belleza y tranquilidad.</p>
+                `
             }
+
         },
         en: {
             pozas: {
@@ -173,9 +287,66 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p>Las Colcas is surrounded by towering mountains forming a small canyon sculpted by the Colca River, creating a serene, safe space free of strong currents. This makes it ideal both for beginners paddling for the first time and for those seeking to enjoy the scenery from a different perspective.</p>
                     <p>The experience includes life jackets, paddles, and a brief briefing on basic paddling techniques before entering the water, ensuring safety and confidence throughout the entire activity.</p>
                 `
+            },
+//Seccion 2: Actividades secundarias.
+
+            camping: {
+                titulo: "Camping Areas",
+                descripcion: `
+                    <p>Las Colcas offers the perfect space to experience a different and adventurous night, sharing special moments with friends or family.</p>
+                    <p>You can camp on the sand along the banks of the Colca River, enjoying a campfire in the middle of nature and imagining stories under the starry sky. You can also pitch your tent on the grass area in front of the hot springs, in a peaceful and cozy atmosphere.</p>
+                    <p>Live a unique experience of rest and connection with nature. Surrounded by mountains, fresh air, and the soothing sound of the river, Las Colcas is the ideal place to share unforgettable nights in a safe and tranquil environment.</p>
+                `
+            },
+            pesca: {
+                titulo: "Trout Fishing",
+                descripcion: `
+                    <p>The Colca River keeps the presence of trout alive, and at Las Colcas, ideal spaces are formed to enjoy fishing.</p>
+                    <p>If you want to catch a trout and cook it later, here you can live that experience surrounded by nature and tranquility.</p>
+                `
+            },
+            parrilla: {
+                titulo: "Grill Zones",
+                descripcion: `
+                    <p>Share special moments outdoors in our grill areas, designed to enjoy family gatherings, meetings with friends, and lunches surrounded by nature.</p>
+                    <p>The river landscape, the mountains, and the warm atmosphere of Las Colcas turn every meal into a cozy and memorable experience.</p>
+                `
+            },
+             //Seccion 3: Puntos turísticos de Yanque. 
+mirador: {
+                titulo: "Colca River Viewpoint",
+                descripcion: `
+                    <p>Contemplate one of the most breathtaking views of the valley from the natural viewpoint of the Colca River, where the Andean landscape reveals the canyon formation, ancient terraces, and natural shapes sculpted by time.</p>
+                    <p>It is the perfect place to enjoy the tranquility of the surroundings, capture panoramic photographs, and connect with the majesty of Colca.</p>
+                `
+            },
+            anfitearo: {
+                titulo: "Occolle Amphitheater",
+                descripcion: `
+                    <p>The Occolle Amphitheater is an impressive natural and agricultural formation made up of terraces built on the mountainsides, considered part of the ancestral heritage of the Colca Valley.</p>
+                    <p>Its harmonious design with the landscape showcases the ingenuity of ancient Andean cultures and offers a unique view where nature and history come together in a spectacular setting.</p>
+                `
+            },
+            tumbas: {
+                titulo: "Hanging Tombs",
+                descripcion: `
+                    <p>There are two theories about this site. Some sources mention that they were colcas, storage facilities used to preserve food products such as fava beans, corn, and other local crops.</p>
+                    <p>Others believe they are hanging tombs related to the customs and spiritual beliefs of the pre-Inca cultures that inhabited the valley.</p>
+                    <p>To this day, their exact true purpose remains unknown, but these structures can be clearly observed from the siphon bridge.</p>
+                `
+            },
+            uyouyo: {
+                titulo: "Uyo Uyo Archaeological Site",
+                descripcion: `
+                    <p>Uyo Uyo is an ancient archaeological complex located near Yanque, considered one of the most representative historical settlements in the Colca Valley.</p>
+                    <p>Its stone paths, terraces, and ancestral structures allow visitors to discover part of the history and social organization of ancient Andean civilizations, surrounded by a natural environment of great beauty and serenity.</p>
+                `
             }
+
         }
-    };
+    }
+
+
 
     // Mapeo exhaustivo de componentes de la interfaz modal ocultos
     const modal = document.getElementById("modal-dinamico");
@@ -212,7 +383,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Vinculación de los eventos de clic en los botones de detalles
-    const botonesDetalles = document.querySelectorAll(".card-btn-details");
+    const botonesDetalles = document.querySelectorAll(".card-btn-details, .card-btn-details-sec");
     botonesDetalles.forEach(boton => {
         boton.addEventListener("click", (e) => {
             const servicio = e.target.getAttribute("data-modal");
