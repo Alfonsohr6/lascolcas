@@ -474,6 +474,114 @@ a {
     margin-top: 0.5rem;
     text-align: left;
 }
+
+/* ==========================================================================
+   SECCIÓN: MOTOR 5 - CARRUSEL DE VIDEOS VERTICALES (ESTILO TIKTOK)
+   ========================================================================== */
+
+.tiktok-carousel-section {
+    max-width: 1200px;
+    margin: 0 auto 4rem auto;
+    padding: 0 1.5rem;
+    position: relative;
+}
+
+/* Envoltorio del carrusel para posicionar las flechas de control absolute */
+.tiktok-carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Contenedor dinámico con scroll horizontal protegido */
+.tiktok-carousel-container {
+    display: flex;
+    gap: 1rem; /* Separación limpia entre videos */
+    overflow-x: auto; /* Permite el deslizamiento horizontal */
+    scroll-behavior: smooth; /* Hace que el paso por click sea fluido */
+    scroll-snap-type: x mandatory; /* Fuerza a que el video se encaje perfecto al frenar */
+    width: 100%;
+    padding: 1rem 0;
+    
+    /* Oculta la barra de scroll fea en Chrome, Safari y Opera */
+    background: transparent;
+}
+
+.tiktok-carousel-container::-webkit-scrollbar {
+    display: none; 
+}
+
+/* Oculta la barra de scroll en Firefox y Edge */
+.tiktok-carousel-container {
+    -ms-overflow-style: none;  /* IE y Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* LA REGLA MAESTRA: El elemento de video individual */
+.tiktok-video-card {
+    /* MATEMÁTICA PARA COMPUTADORA: 5 videos por fila exacta */
+    /* Cada uno mide el 20% del total menos una parte proporcional del gap */
+    flex: 0 0 calc((100% - 4rem) / 5); 
+    
+    aspect-ratio: 9 / 16; /* Forzado estricto a formato vertical tipo TikTok */
+    background-color: #000000; /* Fondo negro elegante mientras carga el video */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(74, 51, 25, 0.04);
+    scroll-snap-align: start; /* Punto de anclaje para el scroll táctil */
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.tiktok-video-card:hover {
+    transform: scale(1.02); /* Reacción sutil premium al pasar el mouse */
+}
+
+/* Estilo para los reproductores que inyectará el JS (pueden ser videos nativos o links embed) */
+.tiktok-video-card video,
+.tiktok-video-card iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+}
+
+/* BOTONES DE CONTROL (Flechas laterales de click en click) */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(253, 251, 247, 0.9); /* Fondo crema translúcido a juego */
+    border: 1px solid rgba(74, 51, 25, 0.1);
+    color: var(--color-secundario);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.carousel-control:hover {
+    background-color: var(--color-secundario);
+    color: #ffffff;
+}
+
+/* Posicionamiento quirúrgico de las flechas fuera de la zona de videos */
+.carousel-control.prev {
+    left: -20px;
+}
+
+.carousel-control.next {
+    right: -20px;
+}
+
 /* ==========================================================================
    SECCIÓN: TARJETAS SECUNDARIAS COMPACTAS (Camping, Pesca, Parrilla)
    ========================================================================== */
@@ -1106,6 +1214,11 @@ a {
         padding: 0 2rem; 
     }
 
+    .tiktok-video-card {
+        /* Pasa a 3 videos visibles en pantallas medianas */
+        flex: 0 0 calc((100% - 2rem) / 3);
+    }
+
     .grid-experiencias-secundarias {
         grid-template-columns: repeat(2, 1fr); /* En tablets se acomoda en 2 columnas */
         gap: 1.5rem;
@@ -1232,6 +1345,21 @@ a {
     .card-title-massive { 
         font-size: 1.6rem; 
     }
+
+    .tiktok-video-card {
+        /* Muestra exactamente 2 videos por pantalla sin amontonarse */
+        flex: 0 0 calc((100% - 1rem) / 2);
+    }
+    
+    .tiktok-carousel-section {
+        padding: 0 1rem;
+    }
+    
+    /* En celulares las flechas estorban al deslizar con el dedo, mejor las ocultamos */
+    .carousel-control {
+        display: none;
+    }
+    
     .grid-experiencias-secundarias {
         grid-template-columns: 1fr; /* En celulares baja a 1 sola columna vertical limpia */
         gap: 1.5rem;
