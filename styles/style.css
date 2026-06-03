@@ -337,21 +337,60 @@ a {
     box-shadow: 0 12px 30px rgba(74, 51, 25, 0.06);
 }
 
+/* Contenedor de la imagen preparado para la espera */
 .card-image-box {
     width: 100%;
-    height: 280px; /* Un poco más alto para mayor impacto visual */
+    height: 280px; 
     overflow: hidden;
+    position: relative;
+    background-color: #EAE5DB; /* Fondo crema/gris rústico base por si no hay señal */
 }
 
+/* La imagen oculta su opacidad ligeramente hasta que el JS la refresque */
 .card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    opacity: 0.9; /* Un toque sutil de transparencia mientras espera */
 }
 
+/* Cuando el mouse pasa por encima, si la foto ya cargó, hace su zoom elegante */
 .experiencia-card:hover .card-img {
-    transform: scale(1.04); /* Efecto zoom sutil elegante */
+    transform: scale(1.04);
+    opacity: 1; /* Brillo completo al interactuar */
+}
+
+/* ==========================================================================
+   EFECTO SKELETON: Animación de pulsación para la espera del Sheet
+   ========================================================================== */
+.card-image-box.loading-skeleton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Crea un reflejo de luz diagonal que simula carga */
+    background: linear-gradient(
+        90deg,
+        rgba(234, 229, 219, 0) 0%,
+        rgba(253, 251, 247, 0.6) 50%,
+        rgba(234, 229, 219, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: pulsacionCarga 1.6s infinite linear;
+    pointer-events: none; /* Evita que estorbe los clics */
+}
+
+/* Animación matemática para mover el reflejo de izquierda a derecha de forma infinita */
+@keyframes pulsacionCarga {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 .card-content {
@@ -1359,7 +1398,7 @@ a {
     .carousel-control {
         display: none;
     }
-    
+
     .grid-experiencias-secundarias {
         grid-template-columns: 1fr; /* En celulares baja a 1 sola columna vertical limpia */
         gap: 1.5rem;
