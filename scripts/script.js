@@ -649,7 +649,7 @@ MOTOR 3 - GALERÍA DINÁMICA DESDE GOOGLE SHEETS
 
 /**
  * MOTOR 5: Sistema Autónomo de Videos Verticales (Estilo Reels)
- * Las Colcas - Yanque (Edición Optimizada Iframe Drive - Centrado Asegurado)
+ * Las Colcas - Yanque (Edición Exclusiva para Streaming Directo desde Cloudinary / MP4)
  */
 (function() {
     'use strict';
@@ -687,43 +687,45 @@ MOTOR 3 - GALERÍA DINÁMICA DESDE GOOGLE SHEETS
     }
 
     /**
-     * GENERADOR DE REPRODUCTOR DRIVE COMPATIBLE (IFRAME PREVIEW)
-     * Soluciona el problema de carga usando Preview, y corrige el descentrado con CSS en el Wrapper
+     * GENERADOR NATIVO DE VIDEO (Optimizado para Enlaces Cloudinary .mp4)
+     * Diseñado quirúrgicamente para adaptación perfecta en pantallas Samsung Galaxy S6 / A21
      */
     function generarEstructuraVideo(url, idVideo, descripcionText) {
         if (!url) return '';
         let urlLimpia = url.replace(/["']/g, '').trim();
-        let idDrive = '';
 
-        // Extracción estricta del ID de Google Drive
+        // Si por error pusiste un link de Drive, te damos soporte de fallback temporal,
+        // pero lo ideal es usar el enlace de Cloudinary directo.
         if (urlLimpia.includes('drive.google.com')) {
+            let idDrive = '';
             if (urlLimpia.includes('/file/d/')) {
                 idDrive = urlLimpia.split('/file/d/')[1].split('/')[0];
             } else if (urlLimpia.includes('id=')) {
                 idDrive = urlLimpia.split('id=')[1].split('&')[0];
             }
+            if (idDrive) {
+                urlLimpia = `https://docs.google.com/uc?export=download&id=${idDrive}`;
+            }
         }
 
-        // Si no se encuentra un ID válido de Drive, no renderizamos para evitar cuadros en blanco
-        if (!idDrive) return '';
-
-        // Construcción de la URL de previsualización oficial de Google
-        let urlPreview = `https://drive.google.com/file/d/${idDrive}/preview`;
-
-        // RETORNO DE INTERFAZ: Forzamos un contenedor flex centralizado y overflow oculto
-        // El iframe se configura con transformaciones para amortiguar cualquier barra negra lateral de Google
-        // RETORNO DE INTERFAZ: Forzamos sobredimensión lateral para expulsar las barras negras de Google
+        // RETORNO DE INTERFAZ: Renderizado HTML5 puro estilo TikTok/Reels
+        // El uso de controlslist e inline evita que se abran reproductores nativos del sistema en Galaxy antiguos
         return `
-            <div class="video-wrapper" style="width:100%; height:100%; position:relative; background-color:#000; border-radius:12px; overflow:hidden;">
-                <iframe 
-                    src="${urlPreview}" 
+            <div class="video-wrapper" style="width:100%; height:100%; position:relative; background-color:#000; border-radius:12px; overflow:hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                <video 
+                    src="${urlLimpia}" 
                     class="tiktok-player" 
-                    allow="autoplay; encrypted-media" 
-                    allowfullscreen 
-                    style="width:140%; height:100%; border:none; display:block; position:absolute; top:0; left:-20%; border-radius:12px;">
-                </iframe>
-                <div class="video-overlay" style="position:absolute; bottom:15px; left:12px; right:12px; color:#fff; text-shadow:2px 2px 5px rgba(0,0,0,0.9); pointer-events:none; font-size:0.85rem; font-weight:bold; z-index:10; background:rgba(0,0,0,0.4); padding:6px 10px; border-radius:6px; box-sizing:border-box;">
-                    <p class="video-desc-text" style="margin:0; line-height:1.3; white-space:normal; word-wrap:break-word;">${descripcionText}</p>
+                    loop
+                    muted
+                    controls
+                    playsinline 
+                    controlslist="nodownload nofullscreen noremoteplayback"
+                    disablepictureinpicture
+                    preload="metadata"
+                    style="width:100%; height:100%; object-fit:cover; object-position:center; display:block; border-radius:12px; background-color:#000;">
+                </video>
+                <div class="video-overlay" style="position:absolute; bottom:12px; left:10px; right:10px; color:#fff; text-shadow:1px 1px 4px rgba(0,0,0,0.9); pointer-events:none; font-size:0.8rem; font-weight:bold; z-index:10; background:linear-gradient(transparent, rgba(0,0,0,0.7)); padding:20px 10px 8px 10px; border-radius:0 0 12px 12px; box-sizing:border-box;">
+                    <p class="video-desc-text" style="margin:0; line-height:1.2; white-space:normal; word-wrap:break-word;">${descripcionText}</p>
                 </div>
             </div>`;
     }
