@@ -646,3 +646,215 @@ MOTOR 3 - GALERÍA DINÁMICA DESDE GOOGLE SHEETS
         ejecutarMotor4();
     }
 })();
+
+/**
+ * MOTOR 5: Sistema Autónomo Universal de Videos Verticales (Estilo Reels/TikTok)
+ * Las Colcas - Yanque (Edición Híbrida Multiplataforma: Drive, Instagram y Enlaces Directos)
+ */
+(function() {
+    'use strict';
+
+    // 1. CONFIGURACIÓN DEL REPOSITORIO DE VIDEOS (Hoja 3 del Sheet)
+    const DOCUMENT_ID = 'e/2PACX-1vSccxABPgnZ2bXmu1biB3js9O_6zmoJkpHKuSCKOUbifO1f347AzyOlJRpTeUaqehALwMo4xmYOx72S';
+    const GID_TIKTOK = '713023803'; 
+    const SHEET_URL = `https://docs.google.com/spreadsheets/d/${DOCUMENT_ID}/pub?output=csv&gid=${GID_TIKTOK}`;
+
+    const CONTENEDOR_DINAMICO = document.getElementById('contenedor-tiktok-dinamico');
+    const BTN_PREV = document.getElementById('btn-tiktok-prev');
+    const BTN_NEXT = document.getElementById('btn-tiktok-next');
+
+    // Procesador CSV local e independiente
+    function parsearCSVLocal(texto) {
+        const lineas = texto.split(/\r?\n/);
+        return lineas.map(linea => {
+            const resultado = [];
+            let dentroDeComillas = false;
+            let entradaActual = "";
+            for (let i = 0; i < linea.length; i++) {
+                const char = linea[i];
+                if (char === '"') {
+                    dentroDeComillas = !dentroDeComillas;
+                } else if (char === ',' && !dentroDeComillas) {
+                    resultado.push(entradaActual);
+                    entradaActual = "";
+                } else {
+                    entradaActual += char;
+                }
+            }
+            resultado.push(entradaActual);
+            return resultado;
+        });
+    }
+
+    /**
+     * DETECTOR Y CONVERTIDOR MAESTRO DE ENLACES MULTIPLATAFORMA
+     * Analiza el link del Sheets y genera el elemento HTML correspondiente.
+     */
+    function generarEstructuraVideo(url, idVideo, descripcionText) {
+        if (!url) return '';
+        let urlLimpia = url.replace(/["']/g, '').trim();
+        
+        // -----------------------------------------------------------------
+        // CASO 1: GOOGLE DRIVE (Soporta archivos gigantes sin límite de peso)
+        // -----------------------------------------------------------------
+        if (urlLimpia.includes('drive.google.com')) {
+            let idDrive = '';
+            if (urlLimpia.includes('/file/d/')) {
+                idDrive = urlLimpia.split('/file/d/')[1].split('/')[0];
+            } else if (urlLimpia.includes('id=')) {
+                idDrive = urlLimpia.split('id=')[1].split('&')[0];
+            }
+            
+            if (idDrive) {
+                let urlPreview = `https://drive.google.com/file/d/${idDrive}/preview`;
+                return `
+                    <div class="video-wrapper" style="width:100%; height:100%; position:relative; background-color:#000;">
+                        <iframe src="${urlPreview}" class="tiktok-player" allow="autoplay; encrypted-media" allowfullscreen style="width:100%; height:100%; border:none; object-fit:cover; border-radius:12px;"></iframe>
+                        <div class="video-overlay" style="position:absolute; bottom:15px; left:12px; right:12px; color:#fff; text-shadow:2px 2px 5px rgba(0,0,0,0.9); pointer-events:none; font-size:0.85rem; font-weight:bold; z-index:10; background:rgba(0,0,0,0.4); padding:6px 10px; border-radius:6px;">
+                            <p class="video-desc-text" style="margin:0; line-height:1.3;">${descripcionText}</p>
+                        </div>
+                    </div>`;
+            }
+        }
+
+        // -----------------------------------------------------------------
+        // CASO 2: INSTAGRAM REELS
+        // -----------------------------------------------------------------
+        if (urlLimpia.includes('instagram.com')) {
+            // Limpiamos los parámetros de tracking extras para obtener la URL base limpia
+            let urlBaseInsta = urlLimpia.split('?')[0];
+            if (!urlBaseInsta.endsWith('/')) urlBaseInsta += '/';
+            let urlEmbed = `${urlBaseInsta}embed/captioned=0`;
+            
+            return `
+                <div class="video-wrapper" style="width:100%; height:100%; position:relative; background-color:#000;">
+                    <iframe src="${urlEmbed}" class="tiktok-player" allowtransparency="true" frameborder="0" scrolling="no" style="width:100%; height:100%; border:none; object-fit:cover; border-radius:12px;"></iframe>
+                    <div class="video-overlay" style="position:absolute; bottom:15px; left:12px; right:12px; color:#fff; text-shadow:2px 2px 5px rgba(0,0,0,0.9); pointer-events:none; font-size:0.85rem; font-weight:bold; z-index:10; background:rgba(0,0,0,0.4); padding:6px 10px; border-radius:6px;">
+                        <p class="video-desc-text" style="margin:0; line-height:1.3;">${descripcionText}</p>
+                    </div>
+                </div>`;
+        }
+
+        // -----------------------------------------------------------------
+        // CASO 3: TIKTOK (Incrustación oficial compacta)
+        // -----------------------------------------------------------------
+        if (urlLimpia.includes('tiktok.com')) {
+            // Usamos el reproductor embebido estándar de TikTok para compatibilidad móvil
+            let urlEmbedTikTok = urlLinterTikTok(urlLimpia);
+            return `
+                <div class="video-wrapper" style="width:100%; height:100%; position:relative; background-color:#000;">
+                    <iframe src="${urlEmbedTikTok}" class="tiktok-player" allowfullscreen scrolling="no" style="width:100%; height:100%; border:none; object-fit:cover; border-radius:12px;"></iframe>
+                    <div class="video-overlay" style="position:absolute; bottom:15px; left:12px; right:12px; color:#fff; text-shadow:2px 2px 5px rgba(0,0,0,0.9); pointer-events:none; font-size:0.85rem; font-weight:bold; z-index:10; background:rgba(0,0,0,0.4); padding:6px 10px; border-radius:6px;">
+                        <p class="video-desc-text" style="margin:0; line-height:1.3;">${descripcionText}</p>
+                    </div>
+                </div>`;
+        }
+
+        // -----------------------------------------------------------------
+        // CASO 4: ENLACES DIRECTOS A ARCHIVOS MP4 U OTROS SERVIDORES
+        // -----------------------------------------------------------------
+        return `
+            <div class="video-wrapper" style="width:100%; height:100%; position:relative;">
+                <video src="${urlLimpia}" class="tiktok-player" controls playsinline preload="metadata" style="width:100%; height:100%; object-fit:cover; border-radius:12px; background-color:#000;"></video>
+                <div class="video-overlay" style="position:absolute; bottom:45px; left:12px; right:12px; color:#fff; text-shadow:2px 2px 5px rgba(0,0,0,0.9); pointer-events:none; font-size:0.85rem; font-weight:bold; z-index:10; background:rgba(0,0,0,0.4); padding:6px 10px; border-radius:6px;">
+                    <p class="video-desc-text" style="margin:0; line-height:1.3;">${descripcionText}</p>
+                </div>
+            </div>`;
+    }
+
+    /**
+     * Formatea links de TikTok para extraer su ID y convertirlos en reproductores seguros
+     */
+    function urlLinterTikTok(url) {
+        if (url.includes('/video/')) {
+            let idVideo = url.split('/video/')[1].split('?')[0];
+            return `https://www.tiktok.com/embed/v2/${idVideo}`;
+        }
+        // Fallback si ponen un enlace corto de compartir de TikTok móvil (redirige al embed nativo)
+        return url;
+    }
+
+    function configurarControlesCarrusel() {
+        if (!CONTENEDOR_DINAMICO || !BTN_PREV || !BTN_NEXT) return;
+
+        const obtenerDistanciaDesplazamiento = () => {
+            const primeraTarjeta = CONTENEDOR_DINAMICO.querySelector('.tiktok-video-card');
+            if (primeraTarjeta) {
+                const estiloContenedor = window.getComputedStyle(CONTENEDOR_DINAMICO);
+                const gap = parseInt(estiloContenedor.gap) || 16;
+                return primeraTarjeta.offsetWidth + gap;
+            }
+            return 300;
+        };
+
+        BTN_PREV.addEventListener('click', () => {
+            CONTENEDOR_DINAMICO.scrollBy({ left: -obtenerDistanciaDesplazamiento(), behavior: 'smooth' });
+        });
+
+        BTN_NEXT.addEventListener('click', () => {
+            CONTENEDOR_DINAMICO.scrollBy({ left: obtenerDistanciaDesplazamiento(), behavior: 'smooth' });
+        });
+    }
+
+    async function ejecutarMotor5() {
+        if (!CONTENEDOR_DINAMICO) return;
+
+        try {
+            const respuesta = await fetch(SHEET_URL);
+            if (!respuesta.ok) throw new Error("No se pudo conectar con el repositorio.");
+
+            const textoCSV = await respuesta.text();
+            const filas = parsearCSVLocal(textoCSV);
+            if (filas.length < 2) {
+                CONTENEDOR_DINAMICO.innerHTML = '<p style="text-align:center; width:100%;">Pronto subiremos más videos de nuestras experiencias.</p>';
+                return;
+            }
+
+            const cabecera = filas[0].map(c => c.replace(/["']/g, '').trim().toLowerCase());
+            const indexId = cabecera.indexOf('id');
+            const indexLink = cabecera.indexOf('link');
+            const indexDesc = cabecera.indexOf('descripcion');
+
+            const idxId = indexId !== -1 ? indexId : 0;
+            const idxLink = indexLink !== -1 ? indexLink : 1;
+            const idxDesc = indexDesc !== -1 ? indexDesc : 2;
+
+            CONTENEDOR_DINAMICO.innerHTML = '';
+
+            for (let i = 1; i < filas.length; i++) {
+                const fila = filas[i];
+                if (!fila[idxId] || !fila[idxLink]) continue;
+
+                const idVideo = fila[idxId].replace(/["']/g, '').trim();
+                const linkOriginal = fila[idxLink].trim();
+                const descripcionText = fila[idxDesc] ? fila[idxDesc].replace(/["']/g, '').trim() : 'Momentos Las Colcas';
+
+                // Generamos la tarjeta basándonos en la plataforma del enlace
+                const contenidoEstructura = generarEstructuraVideo(linkOriginal, idVideo, descripcionText);
+
+                if (contenidoEstructura) {
+                    const tarjetaVideo = document.createElement('div');
+                    tarjetaVideo.className = 'tiktok-video-card';
+                    tarjetaVideo.setAttribute('data-id', idVideo);
+                    tarjetaVideo.innerHTML = contenidoEstructura;
+
+                    CONTENEDOR_DINAMICO.appendChild(tarjetaVideo);
+                }
+            }
+
+            configurarControlesCarrusel();
+
+        } catch (error) {
+            console.error("Error crítico en Motor 5 (Videos):", error);
+            if (CONTENEDOR_DINAMICO) {
+                CONTENEDOR_DINAMICO.innerHTML = '<p style="text-align:center; width:100%;">Disfruta de nuestros contenidos multimedia en nuestras redes sociales oficiales.</p>';
+            }
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', ejecutarMotor5);
+    } else {
+        ejecutarMotor5();
+    }
+})();
