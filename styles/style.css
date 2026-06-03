@@ -567,6 +567,69 @@ a {
     border-color: var(--color-secundario);
 }
 
+/* ==========================================================================
+   SECCIÓN: PUNTOS TURÍSTICOS (4 en fila con Doble Botón Interactivos)
+   ========================================================================== */
+
+/* Contenedor en malla: Ajusta las 4 tarjetas en una sola fila en pantallas grandes */
+.grid-puntos-turisticos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Divide la fila exactamente en 4 columnas iguales */
+    gap: 1.5rem; /* Espaciado milimétrico optimizado para 4 elementos */
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Grupo de botones en paralelo: Alinea Detalles y Ubicación lado a lado */
+.btn-group-turismo {
+    display: flex;
+    gap: 0.5rem; /* Separación sutil entre ambos botones */
+    width: 100%; /* Ocupa todo el ancho de la caja de contenido */
+    margin-top: 0.5rem; /* Separación elegante respecto al título H4 */
+}
+
+/* Modificación de botones internos para que quepan perfectamente compartiendo el espacio */
+.btn-group-turismo .card-btn-details-sec,
+.btn-group-turismo .card-btn-map {
+    flex: 1; /* Distribuye el espacio 50% y 50% de manera matemática exacta */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px; /* Altura estandarizada y cómoda para el toque táctil en celulares */
+    font-size: 0.8rem; /* Tipografía milimétricamente ajustada para evitar desbordes */
+    font-weight: 400;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Quita el subrayado por defecto de la etiqueta <a> */
+}
+
+/* Estilo rústico para el botón de Detalles (Transparente con borde) */
+.btn-group-turismo .card-btn-details-sec {
+    background-color: transparent;
+    color: var(--color-secundario);
+    border: 1px solid rgba(74, 51, 25, 0.2);
+}
+
+.btn-group-turismo .card-btn-details-sec:hover {
+    background-color: var(--color-secundario);
+    color: #ffffff;
+    border-color: var(--color-secundario);
+}
+
+/* Estilo premium para el botón de Ubicación (Fondo tierra con texto claro) */
+.btn-group-turismo .card-btn-map {
+    background-color: var(--color-secundario);
+    color: #ffffff;
+    border: 1px solid var(--color-secundario);
+}
+
+.btn-group-turismo .card-btn-map:hover {
+    background-color: var(--color-acento); /* Cambia a verde oliva para dar feedback de mapa activo */
+    border-color: var(--color-acento);
+}
+
 /* Contenedor general del bloque separado de las tarjetas */
 .policies-accordion-box {
     max-width: 1200px; /* Ampliamos el ancho máximo para que entren cómodos en fila */
@@ -1048,6 +1111,11 @@ a {
         gap: 1.5rem;
     }
 
+    .grid-puntos-turisticos {
+        grid-template-columns: repeat(2, 1fr); /* En pantallas medianas pasa a un hermoso diseño de 2x2 */
+        gap: 1.5rem;
+    }
+
     .footer-grid {
         grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablet */
         gap: 2.5rem;
@@ -1173,7 +1241,20 @@ a {
     .card-sec-image-box {
         height: 180px; /* Un toque más bajo en pantallas táctiles pequeñas */
     }
+
+    .grid-puntos-turisticos {
+        grid-template-columns: 1fr; /* En celulares baja a 1 sola columna vertical limpia y espaciosa */
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
     
+    /* Pequeño ajuste para que los botones tengan buen tamaño en pantallas táctiles muy angostas */
+    .btn-group-turismo .card-btn-details-sec,
+    .btn-group-turismo .card-btn-map {
+        font-size: 0.85rem; 
+        height: 42px; /* Un toque más altos en celulares para facilitar el clic con el pulgar */
+    }
+
 /* Ajustes para la sección de políticas en teléfonos estándar (Galaxy A56) */
     .policies-accordion {
         flex-direction: column; /* Regresa a vertical automáticamente en pantallas táctiles */
