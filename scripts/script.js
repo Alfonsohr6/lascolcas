@@ -686,17 +686,36 @@ MOTOR 3 - GALERÍA DINÁMICA DESDE GOOGLE SHEETS
         });
     }
 
-    /**
-     * GENERADOR NATIVO DE VIDEO (Optimizado para Enlaces Cloudinary .mp4)
-     * Diseñado quirúrgicamente para adaptación perfecta en pantallas Samsung Galaxy S6 / A21
+/**
+     * GENERADOR NATIVO DE VIDEO (Con auto-conversor inteligente de enlaces)
+     * Detecta y desarma links Embed de Cloudinary para transformarlos en .mp4 puros
      */
     function generarEstructuraVideo(url, idVideo, descripcionText) {
         if (!url) return '';
         let urlLimpia = url.replace(/["']/g, '').trim();
 
-        // Si por error pusiste un link de Drive, te damos soporte de fallback temporal,
-        // pero lo ideal es usar el enlace de Cloudinary directo.
-        if (urlLimpia.includes('drive.google.com')) {
+        // 🦊 AUTO-CONVERSOR PARA CLOUDINARY EMBED
+        // Si pegas por error: https://player.cloudinary.com/embed/?cloud_name=dc7ou8r8p&public_id=video_ie8rzj
+        if (urlLimpia.includes('player.cloudinary.com')) {
+            try {
+                // Desarmamos la URL para extraer las piezas clave
+                const urlObj = new URL(urlLimpia);
+                const params = new URLSearchParams(urlObj.search);
+                
+                const cloudName = params.get('cloud_name');
+                const publicId = params.get('public_id');
+
+                // Si logramos extraer ambas piezas, fabricamos el link directo optimizado (.mp4)
+                if (cloudName && publicId) {
+                    urlLimpia = `https://res.cloudinary.com/${cloudName}/video/upload/q_auto,f_auto/${publicId}.mp4`;
+                }
+            } catch (e) {
+                console.error("Error al desarmar el link de Cloudinary:", e);
+            }
+        }
+
+        // 🚗 FALLBACK POR SI QUEDAN LINKS ANTIGUOS DE GOOGLE DRIVE
+        else if (urlLimpia.includes('drive.google.com')) {
             let idDrive = '';
             if (urlLimpia.includes('/file/d/')) {
                 idDrive = urlLimpia.split('/file/d/')[1].split('/')[0];
@@ -708,8 +727,7 @@ MOTOR 3 - GALERÍA DINÁMICA DESDE GOOGLE SHEETS
             }
         }
 
-        // RETORNO DE INTERFAZ: Renderizado HTML5 puro estilo TikTok/Reels
-        // El uso de controlslist e inline evita que se abran reproductores nativos del sistema en Galaxy antiguos
+        // RETORNO DE INTERFAZ: Renderizado HTML5 rústico-premium optimizado
         return `
             <div class="video-wrapper" style="width:100%; height:100%; position:relative; background-color:#000; border-radius:12px; overflow:hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
                 <video 
