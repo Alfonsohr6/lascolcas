@@ -635,6 +635,33 @@ a {
     padding: 0 1.5rem;
 }
 
+.subseccion-title {
+    font-size: 1.8rem;
+    font-weight: 400;                     /* Tipografía ligeramente marcada pero limpia */
+    color: var(--color-secundario);        /* Tu Marrón Tierra rústico */
+    text-align: center;                   /* ¡Adiós al aburrido alineado izquierdo! */
+    text-transform: uppercase;            /* Mayúsculas estilizadas */
+    letter-spacing: 2px;                  /* Separación elegante entre letras */
+    margin: 3.5rem auto 2.5rem auto;       /* Margen equilibrado para que respire la sección */
+    position: relative;
+    padding-bottom: 12px;
+    width: 100%;
+    max-width: 600px;                     /* Control de ancho para el centrado */
+}
+
+/* Línea sutil de adorno inferior rústico (Turquesa Colcas) */
+.subseccion-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);         /* Centrado milimétrico de la barra */
+    width: 60px;                          /* Línea minimalista corta */
+    height: 3px;                          /* Grosor fino y limpio */
+    background-color: var(--color-primario); /* Tu Turquesa Colcas de acento */
+    border-radius: 2px;
+}
+
 /* La tarjeta individual compacta: Hereda el estilo rústico premium */
 .experiencia-card-secundaria {
     background-color: #ffffff;
@@ -1567,5 +1594,16 @@ a {
     }
     .card-title-massive { 
         font-size: 1.4rem; 
+    }
+    .subseccion-title {
+        font-size: 1.3rem;                /* Un tamaño más cómodo para pantallas verticales */
+        letter-spacing: 1px;              /* Ajustamos espaciado para que no salte de línea feo */
+        margin: 2.5rem auto 1.8rem auto;
+        padding-bottom: 8px;
+    }
+    
+    .subseccion-title::after {
+        width: 45px;
+        height: 2px;
     }
 }

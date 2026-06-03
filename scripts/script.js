@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "titulo-parrilla": "Parrilla",
             
             // Puntos Turísticos de Yanque
-            "titulo-puntos-tur": "Puntos Turísticos en Yanque",
+            "titulo-puntos-tur": "Puntos Turísticos en camino a las Termas",
             "titulo-mirador": "Mirador del Río Colca",
             "titulo-occolle": "Anfiteatro de Occolle",
             "titulo-tumbas": "Tumbas Colgantes",
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "titulo-parrilla": "Barbecue",
             
             // Tourist Spots in Yanque
-            "titulo-puntos-tur": "Tourist Spots in Yanque",
+            "titulo-puntos-tur": "Tourist Attractions on the way to the Hot Springs",
             "titulo-mirador": "Colca River Viewpoint",
             "titulo-occolle": "Occolle Amphitheater",
             "titulo-tumbas": "Hanging Tombs",
