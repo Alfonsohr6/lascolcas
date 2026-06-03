@@ -69,93 +69,188 @@
 
         <!-- Sección de Experiencias Destacadas -->
         <section id="experiencias" class="experiencias-seccion">
-            <div class="experiencias-header">
-                <h2 class="experiencias-main-title" data-translate="titulo-experiencias">Nuestras Experiencias Estrella</h2>
-                <p class="experiencias-main-desc" data-translate="desc-experiencias">Descubre las actividades más queridas de Las Colcas. Aguas termo-medicinales y aventura viva a orillas del majestuoso río en Yanque.</p>
-            </div>
+    <div class="experiencias-header">
+        <h2 class="experiencias-main-title" data-translate="titulo-experiencias">Nuestras Experiencias Estrella</h2>
+        <p class="experiencias-main-desc" data-translate="desc-experiencias">Descubre las actividades más queridas de Las Colcas. Aguas termo-medicinales y aventura viva a orillas del majestuoso río en Yanque.</p>
+    </div>
 
-            <div class="grid-experiencias">
-                <!-- Tarjeta: Pozas Termales -->
-                <article id="pozas" class="experiencia-card" data-servicio="termas">
-                    <div class="card-image-box">
-                        <img src="images/actividades/pozasestrella.jpg" alt="Pozas Termales Las Colcas en Yanque" class="card-img">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-action-bar">
-                            <div class="action-column price-box">
-                                <span class="action-label" data-translate="label-precio-pozas">Adulto / Niño (1h)</span>
-                                <span class="action-value">S/20 / S/10</span>
-                            </div>
-                            <div class="action-column btn-box">
-                                <button class="card-btn-details" data-modal="pozas" data-translate="btn-detalles">Detalles</button>
-                            </div>
-                            <div class="action-column btn-box">
-                                <a href="https://wa.me/51900962294?text=Quiero%20agendar%20una%20visita%20con%20ustedes" target="_blank" rel="noopener noreferrer" class="card-btn-whatsapp" data-translate="btn-agendar">Agendar</a>
-                            </div>
-                        </div>
-                        <h3 class="card-title-massive" data-translate="titulo-pozas">Pozas Termales</h3>
-                    </div>
-                </article>
-                
-                <!-- Tarjeta: Kayak -->
-                <article id="kayak" class="experiencia-card" data-servicio="aventura">
-                    <div class="card-image-box">
-                        <img src="images/actividades/kayakestrella.jpg" alt="Navegación en Kayak en Yanque" class="card-img">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-action-bar">
-                            <div class="action-column price-box">
-                                <span class="action-label" data-translate="label-precio-kayak">Adulto / Niño (1h)</span>
-                                <span class="action-value">S/20 / S/10</span>
-                            </div>
-                            <div class="action-column btn-box">
-                                <button class="card-btn-details" data-modal="kayak" data-translate="btn-detalles">Detalles</button>
-                            </div>
-                            <div class="action-column btn-box">
-                                <a href="https://wa.me/51900962294?text=Quiero%20agendar%20una%20visita%20con%20ustedes" target="_blank" rel="noopener noreferrer" class="card-btn-whatsapp" data-translate="btn-agendar">Agendar</a>
-                            </div>
-                        </div>
-                        <h3 class="card-title-massive" data-translate="titulo-kayak">Kayak</h3>
-                    </div>
-                </article>
+    <div class="grid-experiencias">
+        <article id="pozas" class="experiencia-card" data-servicio="termas">
+            <div class="card-image-box">
+                <img id="img-pozo" src="images/actividades/pozasestrella.jpg" alt="Pozas Termales Las Colcas en Yanque" class="card-img">
             </div>
-        </section>
-<div class="policies-accordion-box">
-                <h3 class="policies-accordion-title" data-translate="pol-tit-seccion">Condiciones y Políticas de Reserva</h3>
-                
-                <div class="policies-accordion">
-                        <details class="policy-item">
-                            <summary data-translate="faq-pagos-tit">💰 Métodos de Pago Disponibles</summary>
-                            <div class="policy-content">
-                                <p data-translate="faq-pagos-desc">Los pagos se realizan por adelantado y pueden hacerse en efectivo o mediante Yape / Plin.</p>
-                            </div>
-                        </details>
-                    
-                        <details class="policy-item">
-                            <summary data-translate="faq-reserva-tit">📅 ¿Cómo funcionan las Reservaciones?</summary>
-                            <div class="policy-content">
-                                <p data-translate="faq-reserva-desc">
-                                    Las reservas deben realizarse con un mínimo de 8 horas de anticipación, abonando el 50 % del servicio. 
-                                    <br><span class="policy-accent-text">Ejemplo práctico:</span> Si dos personas desean utilizar las pozas termales, se deberá realizar un adelanto de S/ 20.00 para confirmar la reserva.
-                                    <br>En caso de no existir una reserva previa, el servicio podrá brindarse de manera inmediata, sujeto estrictamente a la disponibilidad de espacio.
-                                </p>
-                            </div>
-                        </details>
-                    
-                        <details class="policy-item">
-                            <summary data-translate="faq-cancel-tit">🛡️ Política de Cancelación y Reembolso</summary>
-                            <div class="policy-content">
-                                <p data-translate="faq-cancel-intro">El reembolso o devolución del dinero aplica exclusivamente en los siguientes casos sustentados:</p>
-                                <ul class="policy-bullets-list">
-                                    <li data-translate="faq-cancel-item1">Cuando el cliente no haya recibido el servicio en la hora reservada por causas del establecimiento.</li>
-                                    <li data-translate="faq-cancel-item2">Por una situación de urgencia médica debidamente sustentada con la documentación correspondiente.</li>
-                                    <li data-translate="faq-cancel-item3">Cuando el cliente haya sufrido inconvenientes o molestias graves demostrables dentro del establecimiento.</li>
-                                </ul>
-                            </div>
-                        </details>
+            <div class="card-content">
+                <div class="card-action-bar">
+                    <div class="action-column price-box">
+                        <span class="action-label" data-translate="label-precio-pozas">Adulto / Niño (1h)</span>
+                        <span class="action-value">S/20 / S/10</span>
+                    </div>
+                    <div class="action-column btn-box">
+                        <button class="card-btn-details" data-modal="pozas" data-translate="btn-detalles">Detalles</button>
+                    </div>
+                    <div class="action-column btn-box">
+                        <a href="https://wa.me/51900962294?text=Quiero%20agendar%20una%20visita%20con%20ustedes" target="_blank" rel="noopener noreferrer" class="card-btn-whatsapp" data-translate="btn-agendar">Agendar</a>
                     </div>
                 </div>
-                
+                <h3 class="card-title-massive" data-translate="titulo-pozas">Pozas Termales</h3>
+            </div>
+        </article>
+        
+        <article id="kayak" class="experiencia-card" data-servicio="aventura">
+            <div class="card-image-box">
+                <img id="img-kayak" src="images/actividades/kayakestrella.jpg" alt="Navegación en Kayak en Yanque" class="card-img">
+            </div>
+            <div class="card-content">
+                <div class="card-action-bar">
+                    <div class="action-column price-box">
+                        <span class="action-label" data-translate="label-precio-kayak">Adulto / Niño (1h)</span>
+                        <span class="action-value">S/20 / S/10</span>
+                    </div>
+                    <div class="action-column btn-box">
+                        <button class="card-btn-details" data-modal="kayak" data-translate="btn-detalles">Detalles</button>
+                    </div>
+                    <div class="action-column btn-box">
+                        <a href="https://wa.me/51900962294?text=Quiero%20agendar%20una%20visita%20con%20ustedes" target="_blank" rel="noopener noreferrer" class="card-btn-whatsapp" data-translate="btn-agendar">Agendar</a>
+                    </div>
+                </div>
+                <h3 class="card-title-massive" data-translate="titulo-kayak">Kayak</h3>
+            </div>
+        </article>
+    </div>
+
+    <div class="tiktok-carousel-section">
+        <h3 class="subseccion-title" data-translate="titulo-tiktok-seccion">Nuestros Momentos en Video</h3>
+        <div class="tiktok-carousel-wrapper">
+            <button class="carousel-control prev" id="btn-tiktok-prev">❮</button>
+            
+            <div id="contenedor-tiktok-dinamico" class="tiktok-carousel-container">
+                </div>
+            
+            <button class="carousel-control next" id="btn-tiktok-next">❯</button>
+        </div>
+    </div>
+
+    <div class="secundarias-section">
+        <h3 class="subseccion-title" data-translate="titulo-actividades-sec">Más Actividades en el Establecimiento</h3>
+        <div class="grid-experiencias-secundarias">
+            
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-camping" src="images/actividades/placeholder.jpg" alt="Zonas de Camping en Las Colcas" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-camping">Camping</h4>
+                    <button class="card-btn-details-sec" data-modal="camping" data-translate="btn-detalles">Detalles</button>
+                </div>
+            </article>
+
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-pesca" src="images/actividades/placeholder.jpg" alt="Pesca de Trucha en el Río Colca" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-pesca">Pesca</h4>
+                    <button class="card-btn-details-sec" data-modal="pesca" data-translate="btn-detalles">Detalles</button>
+                </div>
+            </article>
+
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-parrilla" src="images/actividades/placeholder.jpg" alt="Zonas de Parrilla al aire libre" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-parrilla">Parrilla</h4>
+                    <button class="card-btn-details-sec" data-modal="parrilla" data-translate="btn-detalles">Detalles</button>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+    <div class="turismo-section">
+        <h3 class="subseccion-title" data-translate="titulo-puntos-tur">Puntos Turísticos en Yanque</h3>
+        <div class="grid-puntos-turisticos">
+            
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-mirador" src="images/actividades/placeholder.jpg" alt="Mirador Natural del Río Colca" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-mirador">Mirador del Río Colca</h4>
+                    <div class="btn-group-turismo">
+                        <button class="card-btn-details-sec" data-modal="mirador" data-translate="btn-detalles">Detalles</button>
+                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="card-btn-map" data-translate="btn-ubicacion">📍 Ubicación</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-anfitearo" src="images/actividades/placeholder.jpg" alt="Anfiteatro de Occolle" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-occolle">Anfiteatro de Occolle</h4>
+                    <div class="btn-group-turismo">
+                        <button class="card-btn-details-sec" data-modal="anfitearo" data-translate="btn-detalles">Detalles</button>
+                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="card-btn-map" data-translate="btn-ubicacion">📍 Ubicación</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-tumbas" src="images/actividades/placeholder.jpg" alt="Tumbas Colgantes en Yanque" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-tumbas">Tumbas Colgantes</h4>
+                    <div class="btn-group-turismo">
+                        <button class="card-btn-details-sec" data-modal="tumbas" data-translate="btn-detalles">Detalles</button>
+                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="card-btn-map" data-translate="btn-ubicacion">📍 Ubicación</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="experiencia-card-secundaria">
+                <div class="card-sec-image-box">
+                    <img id="img-uyouyo" src="images/actividades/placeholder.jpg" alt="Complejo Arqueológico Uyo Uyo" class="card-sec-img">
+                </div>
+                <div class="card-sec-content">
+                    <h4 data-translate="titulo-uyouyo">Uyo Uyo</h4>
+                    <div class="btn-group-turismo">
+                        <button class="card-btn-details-sec" data-modal="uyouyo" data-translate="btn-detalles">Detalles</button>
+                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="card-btn-map" data-translate="btn-ubicacion">📍 Ubicación</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+    <div class="policies-accordion-box">
+        <h3 class="policies-accordion-title" data-translate="pol-tit-seccion">Condiciones y Políticas de Reserva</h3>
+        <div class="policies-accordion">
+            <details class="policy-item">
+                <summary data-translate="faq-pagos-tit">💰 Métodos de Pago Disponibles</summary>
+                <div class="policy-content">
+                    <p data-translate="faq-pagos-desc">Los pagos se realizan por adelantado y pueden hacerse en efectivo o mediante Yape / Plin.</p>
+                </div>
+            </details>
+            <details class="policy-item">
+                <summary data-translate="faq-reserva-tit">📅 ¿Cómo funcionan las Reservaciones?</summary>
+                <div class="policy-content">
+                    <p data-translate="faq-reserva-desc">Las reservas deben realizarse con un mínimo de 8 horas de anticipación, abonando el 50 % del servicio.</p>
+                </div>
+            </details>
+            <details class="policy-item">
+                <summary data-translate="faq-cancel-tit">🛡️ Política de Cancelación y Reembolso</summary>
+                <div class="policy-content">
+                    <p data-translate="faq-cancel-intro">El reembolso aplica bajo criterios médicos o fallas del servicio.</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
         <!-- Sección Artesanías -->
         <section id="artesanias" class="seccion-artesanias">
             <h2 class="section-title" data-translate="titulo-artesanias">Artesanías de Yanque</h2>
