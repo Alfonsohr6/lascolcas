@@ -120,7 +120,42 @@
                 </article>
             </div>
         </section>
-
+<div class="policies-accordion-box">
+                <h3 class="policies-accordion-title" data-translate="pol-tit-seccion">Condiciones y Políticas de Reserva</h3>
+                
+                <div class="policies-accordion">
+                        <details class="policy-item">
+                            <summary data-translate="faq-pagos-tit">💰 Métodos de Pago Disponibles</summary>
+                            <div class="policy-content">
+                                <p data-translate="faq-pagos-desc">Los pagos se realizan por adelantado y pueden hacerse en efectivo o mediante Yape / Plin.</p>
+                            </div>
+                        </details>
+                    
+                        <details class="policy-item">
+                            <summary data-translate="faq-reserva-tit">📅 ¿Cómo funcionan las Reservaciones?</summary>
+                            <div class="policy-content">
+                                <p data-translate="faq-reserva-desc">
+                                    Las reservas deben realizarse con un mínimo de 8 horas de anticipación, abonando el 50 % del servicio. 
+                                    <br><span class="policy-accent-text">Ejemplo práctico:</span> Si dos personas desean utilizar las pozas termales, se deberá realizar un adelanto de S/ 20.00 para confirmar la reserva.
+                                    <br>En caso de no existir una reserva previa, el servicio podrá brindarse de manera inmediata, sujeto estrictamente a la disponibilidad de espacio.
+                                </p>
+                            </div>
+                        </details>
+                    
+                        <details class="policy-item">
+                            <summary data-translate="faq-cancel-tit">🛡️ Política de Cancelación y Reembolso</summary>
+                            <div class="policy-content">
+                                <p data-translate="faq-cancel-intro">El reembolso o devolución del dinero aplica exclusivamente en los siguientes casos sustentados:</p>
+                                <ul class="policy-bullets-list">
+                                    <li data-translate="faq-cancel-item1">Cuando el cliente no haya recibido el servicio en la hora reservada por causas del establecimiento.</li>
+                                    <li data-translate="faq-cancel-item2">Por una situación de urgencia médica debidamente sustentada con la documentación correspondiente.</li>
+                                    <li data-translate="faq-cancel-item3">Cuando el cliente haya sufrido inconvenientes o molestias graves demostrables dentro del establecimiento.</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                
         <!-- Sección Artesanías -->
         <section id="artesanias" class="seccion-artesanias">
             <h2 class="section-title" data-translate="titulo-artesanias">Artesanías de Yanque</h2>
@@ -145,56 +180,81 @@
         </section>
     </main>
 
-    <!-- Pie de Página -->
+<!-- Pie de Página -->
 <footer id="contacto" class="main-footer">
-        <div class="footer-grid">
-            <div class="footer-column">
-                <h4 data-translate="footer-horario-tit">Horario de Reservas</h4>
-                <p data-translate="footer-horario-desc">Lunes a Domingo<br>7:00 AM – 9:00 PM</p>
+    <div class="footer-grid">
+        <!-- Columna 1: Horarios (Intacta) -->
+        <div class="footer-column">
+            <h4 data-translate="footer-horario-tit">Horario de Reservas</h4>
+            <p data-translate="footer-horario-desc">Lunes a Domingo<br>7:00 AM – 9:00 PM</p>
+        </div>
+
+        <!-- Columna 2: Contacto + Nuevos Servicios y Pagos locales -->
+        <div class="footer-column">
+            <h4 data-translate="footer-contacto-tit">Contacto Directo</h4>
+            
+            <div class="footer-contact-item">
+                <img src="images/icons/telephone-inbound-fill.svg" alt="Teléfono" class="footer-icon">
+                <a href="tel:+51956896113">+51 956 896 113</a>
+            </div>
+            
+            <div class="footer-contact-item">
+                <img src="images/icons/whatsapp.svg" alt="WhatsApp" class="footer-icon">
+                <a href="https://wa.me/51900962294" target="_blank" rel="noopener noreferrer">WhatsApp Chat</a>
+            </div>
+            
+            <div class="footer-contact-item">
+                <img src="images/icons/envelope-at-fill.svg" alt="Email" class="footer-icon">
+                <a href="mailto:lascolcas2000@gmail.com" class="email-link">lascolcas2000@gmail.com</a>
             </div>
 
-            <div class="footer-column">
-                <h4 data-translate="footer-contacto-tit">Contacto Directo</h4>
-                <div class="footer-contact-item">
-                    <img src="images/icons/telephone-inbound-fill.svg" alt="Teléfono" class="footer-icon">
-                    <a href="tel:+51956896113">+51 956 896 113</a>
-                </div>
-                <div class="footer-contact-item">
-                    <img src="images/icons/whatsapp.svg" alt="WhatsApp" class="footer-icon">
-                    <a href="https://wa.me/51900962294" target="_blank" rel="noopener noreferrer">WhatsApp Chat</a>
-                </div>
-                <div class="footer-contact-item">
-                    <img src="images/icons/envelope-at-fill.svg" alt="Email" class="footer-icon">
-                    <a href="mailto:lascolcas2000@gmail.com" class="email-link">lascolcas2000@gmail.com</a>
-                </div>
-            </div>
+            <!-- Divisor sutil interno para separar los datos de contacto de las insignias -->
+           <div class="footer-badges-divider"></div>
 
-            <div class="footer-column">
-                <h4 data-translate="footer-ubicacion-tit">Nuestra Ubicación</h4>
-                <p data-translate="footer-ubicacion-desc">Baños Termales Chininia, Yanque, Valle del Colca, Arequipa, Perú.</p>
-                <a href="https://www.google.com/maps?q=-15.6431942,-71.6616726&z=17&hl=es" target="_blank" rel="noopener noreferrer" class="map-link-wrapper">
-                    <div class="map-placeholder">
-                        <span data-translate="ver-mapa">📍 Ubicación en las Orillas del Río</span>
-                    </div>
-                </a>
+            <!-- Título de subsección corregido con clave de traducción única -->
+            <div class="footer-sub-tit" data-translate="footer-servicios-tit">Servicios Adicionales</div>
+
+            <!-- Contenedor de Insignias optimizado sin estilos en línea -->
+            <div class="footer-badges-container">
+                <div class="footer-contact-item">
+                    <img src="images/icons/paw.svg" alt="Huella Mascota" class="footer-icon">
+                    <span class="footer-badge-text" data-translate="footer-pet-friendly">Establecimiento Pet Friendly</span>
+                </div>
+                <div class="footer-contact-item">
+                    <img src="images/icons/credit-card-fill.svg" alt="Tarjeta Pago" class="footer-icon">
+                    <span class="footer-badge-text" data-translate="footer-pagos-locales">Aceptamos Yape, Plin y Transferencias</span>
+                </div>
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <div class="footer-socials">
-                <a href="https://www.facebook.com/share/1DadiKhStY/" target="_blank" rel="noopener noreferrer">
-                    <img src="images/icons/facebook.svg" alt="Facebook" class="social-icon">
-                </a>
-                <a href="https://www.instagram.com/banostermaleschininia/?igsh=MTJpeXl1cnI1dHVONA==" target="_blank" rel="noopener noreferrer">
-                    <img src="images/icons/instagram.svg" alt="Instagram" class="social-icon">
-                </a>
-                <a href="https://www.tiktok.com/@aguas_termales_y_kayak?_r=1&_t=ZS-96llslFsxuq" target="_blank" rel="noopener noreferrer">
-                    <img src="images/icons/tiktok.svg" alt="TikTok" class="social-icon">
-                </a>
-            </div>
-            <p class="copyright">Las Colcas © 2026. Todos los derechos reservados.</p>
+        <!-- Columna 3: Ubicación (Intacta) -->
+        <div class="footer-column">
+            <h4 data-translate="footer-ubicacion-tit">Nuestra Ubicación</h4>
+            <p data-translate="footer-ubicacion-desc">Baños Termales Chininia, Yanque, Valle del Colca, Arequipa, Perú.</p>
+            <a href="https://www.google.com/maps?q=-15.6431942,-71.6616726&z=17&hl=es" target="_blank" rel="noopener noreferrer" class="map-link-wrapper">
+                <div class="map-placeholder">
+                    <span data-translate="ver-mapa">📍 Ubicación en las Orillas del Río</span>
+                </div>
+            </a>
         </div>
-    </footer>
+    </div>
+
+    <!-- Fila Inferior: Redes sociales y Copyright (Estructura Original Asegurada) -->
+    <div class="footer-bottom">
+        <div class="footer-socials">
+            <a href="https://www.facebook.com/share/1DadiKhStY/" target="_blank" rel="noopener noreferrer">
+                <img src="images/icons/facebook.svg" alt="Facebook" class="social-icon">
+            </a>
+            <a href="https://www.instagram.com/banostermaleschininia/?igsh=MTJpeXl1cnI1dHVONA==" target="_blank" rel="noopener noreferrer">
+                <img src="images/icons/instagram.svg" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://www.tiktok.com/@aguas_termales_y_kayak?_r=1&_t=ZS-96llslFsxuq" target="_blank" rel="noopener noreferrer">
+                <img src="images/icons/tiktok.svg" alt="TikTok" class="social-icon">
+            </a>
+        </div>
+        <p class="copyright">Las Colcas © 2026. Todos los derechos reservados.</p>
+    </div>
+</footer>
 
     <!-- Estructura del Modal Dinámico Corregida para JS -->
     <div id="modal-dinamico" class="modal hidden">

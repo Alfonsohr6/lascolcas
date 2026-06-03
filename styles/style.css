@@ -473,6 +473,109 @@ a {
     text-align: left;
 }
 
+/* Contenedor general del bloque separado de las tarjetas */
+.policies-accordion-box {
+    max-width: 1200px; /* Ampliamos el ancho máximo para que entren cómodos en fila */
+    margin: 4rem auto 1rem auto; /* Separación proporcional de las tarjetas */
+    padding: 0 1.5rem;
+}
+
+/* Subtítulo de la sección de políticas */
+.policies-accordion-title {
+    color: var(--color-secundario);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* EL CAMBIO CLAVE: El contenedor pasa de 'column' a 'row' (Fila horizontal) */
+.policies-accordion {
+    display: flex;
+    flex-direction: row; /* Alineación horizontal en computadoras */
+    gap: 1.5rem; /* Espaciado más amplio y elegante entre tarjetas laterales */
+    align-items: flex-start; /* Evita que las tarjetas se estiren feo si una tiene más texto que otra */
+}
+
+/* Estilo para cada tarjeta desplegable individual (Se calcula el ancho proporcional) */
+.policy-item {
+    flex: 1; /* Esto hace que cada una de las 3 tarjetas ocupe exactamente el mismo ancho */
+    background-color: rgba(74, 51, 21, 0.03); /* Un fondo marrón tierra ultra suave */
+    border: 1px solid rgba(74, 51, 21, 0.08);
+    border-radius: 6px;
+    padding: 0.2rem;
+    transition: all 0.3s ease;
+}
+
+/* Efecto visual cuando el usuario tiene abierto un elemento */
+.policy-item[open] {
+    background-color: #ffffff;
+    border-color: var(--color-primario); /* Borde Turquesa Colcas al abrir */
+    box-shadow: 0 6px 16px rgba(82, 178, 207, 0.1);
+}
+
+/* Estilo para la pestaña interactiva superior (El botón del acordeón) */
+.policy-item summary {
+    padding: 1rem;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--color-secundario);
+    cursor: pointer;
+    list-style: none; /* Esconde la flecha fea por defecto en Chrome/Firefox */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Símbolo interactivo rústico native */
+.policy-item summary::after {
+    content: '＋';
+    font-size: 1.1rem;
+    color: var(--color-acento); /* Verde oliva para los símbolos interactivos */
+    transition: transform 0.3s ease;
+}
+
+/* Rotación matemática de la flecha cuando el componente cambia a estado abierto */
+.policy-item[open] summary::after {
+    content: '－';
+    color: var(--color-primario);
+}
+
+/* Bloque interno donde reside el texto explicativo */
+.policy-content {
+    padding: 0 1rem 1.2rem 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-secundario);
+    text-align: justify;
+}
+
+/* Resaltador para el ejemplo de las pozas de S/20 */
+.policy-accent-text {
+    display: inline-block;
+    background-color: rgba(85, 107, 47, 0.1); /* Fondo verde oliva suave */
+    color: var(--color-acento);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 400;
+}
+
+/* Estilo para la lista de viñetas de las cancelaciones médicas */
+.policy-bullets-list {
+    margin-top: 0.8rem;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.policy-bullets-list li {
+    list-style-type: square; /* Viñetas cuadradas rústicas */
+    color: var(--color-secundario);
+}
+
 /* ==========================================================================
    5. INTERFAZ MODAL OCULTA (Con Soporte de Scroll para Pantallas Chicas)
    ========================================================================== */
@@ -716,6 +819,34 @@ a {
     color: var(--color-primario);
 }
 
+/* Divisor sutil entre el contacto y las insignias */
+.footer-badges-divider {
+    margin: 1.5rem 0 1rem 0;
+    border-top: 1px solid rgba(253, 251, 247, 0.1);
+}
+
+/* Contenedor flexible para alinear las insignias verticalmente */
+.footer-badges-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+/* Subtítulo interno para la sección de servicios adicionales */
+.footer-sub-tit {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-color-light, #fdfbf7); /* Usa la variable de color claro o un fallback */
+    opacity: 0.9;
+}
+
+/* Ajuste de texto para las descripciones de las insignias */
+.footer-badge-text {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
 /* Fila de Cierre del Footer */
 .footer-bottom {
     max-width: 1200px;
@@ -932,6 +1063,30 @@ a {
     }
     .card-title-massive { 
         font-size: 1.6rem; 
+    }
+/* Ajustes para la sección de políticas en teléfonos estándar (Galaxy A56) */
+    .policies-accordion {
+        flex-direction: column; /* Regresa a vertical automáticamente en pantallas táctiles */
+        gap: 0.8rem;
+    }
+    
+    .policies-accordion-box {
+        margin-top: 3rem;
+    }
+    
+    .policies-accordion-title {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .policy-item summary {
+        font-size: 0.95rem;
+        padding: 0.8rem;
+    }
+    
+    .policy-content {
+        font-size: 0.9rem;
+        padding: 0 0.8rem 1rem 0.8rem;
     }
 
     .artesanias-container {
